@@ -1,15 +1,14 @@
 body {
     margin: 0;
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
-    overflow: hidden;
     font-size: 22px;
 }
 
 #main {
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
-    overflow: hidden;
+    overflow-y: auto;
     margin: 0;
     user-select: none;
 
@@ -36,7 +35,7 @@ body {
     }
 
     & > .data {
-        height: 92vh;
+        height: 82vh;
         overflow-y: scroll;
         background-color: rgb(255, 240, 255);
         text-align: center;
