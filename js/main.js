@@ -45,7 +45,14 @@ jQuery(function($){
         data: {
             'musicData': Object,
             'date': String,
-            'sortType': String
+            'sortType': String,
+            'results': Object,
+            'playerSelResults': Object,
+            'rivalSelResults': Object,
+            'totalAvg': Number,
+            'playerAvg': Number,
+            'rivalAvg': Number,
+            'musicAvgRanking': Object,
         },
         mounted: function(){
             this.date = getNowDate();
@@ -56,11 +63,83 @@ jQuery(function($){
             }
             console.log(this.musicData);
         },
+        computed: {
+        },
         methods: {
+            //history
             loadHistory: function(){
-                console.log('loadHis');
-            },
+                $('.hisModal').css('display', 'block');
+                let rankCnt = [0,0,0,0];
+                let rivalCnt = [0,0,0,0];
+                let playerCnt = [0,0,0,0];
+                let dataArr = this.musicData;
+                this.musicAvgRanking = [];
+                //rank
+                dataArr.forEach((val, id)=>{
+                    let songCnt = [0,0,0,0];
+                    val.data.forEach((v,i) => {
+                        switch (v.gameRank) {
+                            case 'first':
+                                rankCnt[0]++;
+                                songCnt[0]++;
+                                v.selector == 'player' ? playerCnt[0]++ : rivalCnt[0]++;
+                                break;
+                            case 'second':
+                                rankCnt[1]++;
+                                songCnt[1]++;
+                                v.selector == 'player' ? playerCnt[1]++ : rivalCnt[1]++;
+                                break;
+                            case 'third':
+                                rankCnt[2]++;
+                                songCnt[2]++;
+                                v.selector == 'player' ? playerCnt[2]++ : rivalCnt[2]++;
+                                break;
+                            case 'fourth':
+                                rankCnt[3]++;
+                                songCnt[3]++;
+                                v.selector == 'player' ? playerCnt[3]++ : rivalCnt[3]++;
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    let songAvgData = {
+                        'title': val.title,
+                        'diff': val.difficult,
+                        'avg': Number((songCnt.reduce((p, c, i) => {return p+c*(i+1)}) / songCnt.reduce((p, c) => {return p+c})).toFixed(2)),
+                        'cnt': songCnt.reduce((p, c) => {return p+c}),
+                    };
+                    this.musicAvgRanking.push(songAvgData);
+                });
+                this.results = rankCnt;
+                this.playerSelResults = playerCnt;
+                this.rivalSelResults = rivalCnt;
+                this.totalAvg = (rankCnt.reduce((p, c, i) => {return p+c*(i+1)}) / rankCnt.reduce((p, c) => {return p+c})).toFixed(2);
+                this.playerAvg = (playerCnt.reduce((p, c, i) => {return p+c*(i+1)}) / playerCnt.reduce((p, c) => {return p+c})).toFixed(2);
+                this.rivalAvg = (rivalCnt.reduce((p, c, i) => {return p+c*(i+1)}) / rivalCnt.reduce((p, c) => {return p+c})).toFixed(2);
+                console.log(this.results)
+                this.musicAvgRanking.sort(function(a,b){
+                    if(a.cnt > b.cnt) return -1;
+                    if(a.cnt < b.cnt) return 1;
+                    return 0;
+                });
+                this.musicAvgRanking.sort(function(a,b){
+                    if(a.avg > b.avg) return 1;
+                    if(a.avg < b.avg) return -1;
+                    return 0;
+                });
 
+                diffArr.forEach((val, id) => {
+                    $('.musicRanking').removeClass(val);
+                })
+                this.musicAvgRanking.forEach((val, id) => {
+                    console.log(selectDiffColor(val.diff));
+                    $('.musicRanking').eq(id + 1).children('.avgtitle').addClass(selectDiffColor(val.diff));
+                });
+            },
+            closeHistory: function(){
+                $('.hisModal').css('display', 'none');
+            },
             //add//
 
             addMusicData: function(){
@@ -288,8 +367,10 @@ jQuery(function($){
             open: function(){
                 diffArr.forEach((val, id) => {
                     $('.songData--title').removeClass(val);
+                    $('.areaTopTitle').removeClass(val);
                 })
                 $('.songData--title').addClass(selectDiffColor(this.data.difficult));
+                $('.areaTopTitle').addClass(selectDiffColor(this.data.difficult));
                 this.rankCnt = [0,0,0,0];
                 let dataArr = this.data.data;
                 //rank

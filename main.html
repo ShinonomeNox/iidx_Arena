@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="optionDataScoreArea">
-                            <p>オプション別順位</p>
+                            <p class="areaTopTitle">オプション別順位</p>
                             <div>
                                 <div class="opWinRate" v-for="(data, id) in optionRank">
                                     <div class="opWinArea">
@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="optionDataScoreArea">
-                            <p>オプション別スコア</p>
+                            <p class="areaTopTitle">オプション別スコア</p>
                             <div>
                                 <div class="opWinRate" v-for="(data, id) in optionRank">
                                     <div class="opWinArea">
@@ -60,7 +60,7 @@
                             </div>
                         </div>
                         <div class="DataHistory">
-                            <p>プレー履歴</p>
+                            <p class="areaTopTitle">プレー履歴</p>
                             <div class="dataHisArea">
                                 <div class="hisDate">日付</div>
                                 <div>選曲</div>
@@ -154,6 +154,41 @@
                     <div><p>メモ</p><input class="songmemo"></div>
                 </div>
                 <div class="registerBtn" @click="registerData()">登録</div>
+            </div>
+        </div>
+        <div class="modal hisModal" @click.self="closeHistory()">
+            <div class="modalArea hisArea" v-bind="results">
+                <div class="hisTitle">通算成績詳細  (平均順位:{{totalAvg}})</div>
+                <div class="rankCntArea">
+                    <div class="rank" v-for="(rank, id) in results">
+                        <p>{{id + 1}}位 : {{rank}}回</p><p class="per">({{Math.round(rank/ results.reduce((p, c) => {return p+c}) * 100)}}％)</p>
+                    </div>
+                </div>
+                <div class="hisTitle">自選曲成績詳細  (平均順位:{{playerAvg}})</div>
+                <div class="rankCntArea">
+                    <div class="rank" v-for="(rank, id) in playerSelResults">
+                        <p>{{id + 1}}位 : {{rank}}回</p><p class="per">({{Math.round(rank/ playerSelResults.reduce((p, c) => {return p+c}) * 100)}}％)</p>
+                    </div>
+                </div>
+                <div class="hisTitle">他選曲成績詳細  (平均順位:{{rivalAvg}})</div>
+                <div class="rankCntArea">
+                    <div class="rank" v-for="(rank, id) in rivalSelResults">
+                        <p>{{id + 1}}位 : {{rank}}回</p><p class="per">({{Math.round(rank/ rivalSelResults.reduce((p, c) => {return p+c}) * 100)}}％)</p>
+                    </div>
+                </div>
+                <div class="hisTitle">曲別平均順位ランキング</div>
+                <div class="musicRanking">
+                    <p class="avgRank__Head">順位</p>
+                    <div class="avgtitle__Head"><p class="title">曲名</p></div>
+                    <p class="avgPer__Head">平均順位</p>
+                    <p class="avgCnt__Head">回数</p>
+                </div>
+                <div class="musicRanking" v-for="(data, id) in musicAvgRanking">
+                    <p class="avgRank">{{id + 1}}位</p>
+                    <div class="avgtitle"><p class="title">{{data.title}}</p><p>({{data.diff}})</p></div>
+                    <p class="avgPer">{{data.avg}}</p>
+                    <p class="avgCnt">{{data.cnt}}回</p>
+                </div>
             </div>
         </div>
     </div>
