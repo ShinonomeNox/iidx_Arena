@@ -238,6 +238,9 @@ jQuery(function($){
             sortMusicName: function(){
                 if(this.sortType == '曲名降順') {
                     this.musicData = JSON.parse(localStorage.getItem('musicdata'));
+                    if(this.musicData == void 0){
+                        this.musicData = [];
+                    }
                     this.sortType = '登録順';
                 }else if(this.sortType == '曲名昇順'){
                     this.musicData.sort(function(a,b){
@@ -259,6 +262,9 @@ jQuery(function($){
             sortMusicDiff: function(){
                 if(this.sortType == '難易度降順') {
                     this.musicData = JSON.parse(localStorage.getItem('musicdata'));
+                    if(this.musicData == void 0){
+                        this.musicData = [];
+                    }
                     this.sortType = '登録順';
                 }else if(this.sortType == '難易度昇順'){
                     this.musicData.sort(function(a,b){
@@ -279,6 +285,9 @@ jQuery(function($){
             sortMusicLV: function(){
                 if(this.sortType == 'レベル昇順') {
                     this.musicData = JSON.parse(localStorage.getItem('musicdata'));
+                    if(this.musicData == void 0){
+                        this.musicData = [];
+                    }
                     this.sortType = '登録順';
                 }else if(this.sortType == 'レベル降順'){
                     this.musicData.sort(function(a,b){
@@ -299,6 +308,9 @@ jQuery(function($){
             sortMusicCnt: function(){
                 if(this.sortType == '回数昇順') {
                     this.musicData = JSON.parse(localStorage.getItem('musicdata'));
+                    if(this.musicData == void 0){
+                        this.musicData = [];
+                    }
                     this.sortType = '登録順';
                 }else if(this.sortType == '回数降順'){
                     this.musicData.sort(function(a,b){
