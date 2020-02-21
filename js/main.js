@@ -220,6 +220,9 @@ jQuery(function($){
                 if(inputData.title == ''){}
                 else{
                     this.musicData = JSON.parse(localStorage.getItem('musicdata'));
+                    if(this.musicData == void 0){
+                        this.musicData = [];
+                    }
                     let index = this.musicData.findIndex(item => {
                         if(item.title === inputData.title && item.difficult === inputData.difficult) return true;
                     })
