@@ -1,0 +1,162 @@
+<link rel="stylesheet" href="./css/main.css">
+<script src="https://unpkg.com/vue@2.5.13/dist/vue.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+</head>
+<body>
+    <script type="text/x-template" id="musicdata-insert">
+        <div id="modal-trigger" class="musicLineData" :style="diffColor" >
+            <div class="music__title" @click.self="open">{{data.title}}</div>
+            <div class="music__difficult" @click.self="open">({{data.difficult}})</div>
+            <div class="music__level" @click.self="open">☆{{data.level}}</div>
+            <div class="music__cnt" @click.self="open">{{data.data.length}}</div>
+            <div id="songDataModal">
+                <div class="modal songModal" v-show="opened" @click.self="close">
+                    <div class="modalArea songArea">
+                        <div class="songDataHeader">
+                            <div class="songData--title">
+                                {{data.title}}({{data.difficult}})
+                            </div>
+                            <div class="songData-playCnt">
+                                {{data.data.length}}回
+                            </div>
+                        </div>
+                        <div class="rankCntArea">
+                            <div class="rank" v-for="(rank, id) in rankCnt">
+                                <p>{{id + 1}}位 : {{rank}}回</p><p class="per">({{Math.round(rank/ data.data.length * 100)}}％)</p>
+                            </div>
+                        </div>
+                        <div class="optionDataScoreArea">
+                            <p>オプション別順位</p>
+                            <div>
+                                <div class="opWinRate" v-for="(data, id) in optionRank">
+                                    <div class="opWinArea">
+                                        <div>{{data.option}}:{{data.rankCnt.reduce((p, c) => {return p+c})}}回</div>
+                                        <div class="opRank" v-for="(rank, id) in data.rankCnt">
+                                            <p class="opGaRank">{{id + 1}}位</p><p class="opScCnt">:{{rank}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optionDataScoreArea">
+                            <p>オプション別スコア</p>
+                            <div>
+                                <div class="opWinRate" v-for="(data, id) in optionRank">
+                                    <div class="opWinArea">
+                                        <div>{{data.option}}:{{data.rankCnt.reduce((p, c) => {return p+c})}}回</div>
+                                        <div class="opScore" v-for="(rank, id) in data.ScoreCnt">
+                                         <p class="opScRank">{{scoreRankArr[id]}}</p><p class="opScCnt">:{{rank}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="DataHistory">
+                            <p>プレー履歴</p>
+                            <div class="dataHisArea">
+                                <div class="hisDate">日付</div>
+                                <div>選曲</div>
+                                <div>ﾗﾝｸ</div>
+                                <div class="hisOption">OP</div>
+                                <div class="hisScore">ｽｺｱ</div>
+                                <div>順位</div>
+                            </div>
+                            <div class="dataHisArea" v-for="(his, id) in normalizeData">
+                                <div class="hisDate">{{normalizeData.length - id}}:{{his.date}}</div>
+                                <div>{{his.selector}}</div>
+                                <div>{{his.arenaRank}}</div>
+                                <div class="hisOption">{{his.option}}</div>
+                                <div class="hisScore">{{his.scoreRank}}</div>
+                                <div>{{his.gameRank}}</div>
+                                <div class="hisMemo">{{his.memo}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <div id="main">
+        <div class="header">
+            <div class="historyBtn btnDiv" @click="loadHistory()">≡</div>
+            <div class="title" >アリーナレコード</div>
+            <div class="addDataBtn btnDiv" @click="addMusicData()">+</div>
+        </div>
+        <div class="data">
+            <div class="musicLineData">
+                <div class="music__title topTitle" @click="sortMusicName()">曲名<div class="sortPatternPrint">({{sortType}})</div></div>
+                <div class="music__difficult" @click="sortMusicDiff()">難度</div>
+                <div class="music__level titleLV" @click="sortMusicLV()">ＬＶ</div>
+                <div class="music__cnt titleCnt" @click="sortMusicCnt()">回数</div>
+            </div>
+            <musicdata-tmpl v-for="(data, item) in this.musicData" :data = "data" :item = "item"></musicdata-tmpl>
+        </div>
+
+        <div class="modal addModal" @click.self="closeRegister()">
+            <div class="modalArea addArea">
+                <div class="top">{{date}}</div>
+                <div class="registerArea">
+                    <div><p>曲名</p><input class="songname"></div>
+                    <div class="oneLine"><p>難易度</p>
+                        <div class="selDiff">
+                            <div class="diffBtn legen" @click="changeSelDiff('legen')">L</div>
+                            <div class="diffBtn another another--select" @click="changeSelDiff('another')">A</div>
+                            <div class="diffBtn hyper" @click="changeSelDiff('hyper')">H</div>
+                            <div class="diffBtn normal" @click="changeSelDiff('normal')">N</div>
+                            <div class="diffBtn begginer" @click="changeSelDiff('begginer')">B</div>
+                        </div>
+                    </div>
+                    <div class="oneLine"><p>レベル</p><div class="selLevel">
+                        <div class="minus" @click="levelChange('minus')">-</div>
+                        <div class="levelPrint">12</div>
+                        <div class="plus" @click="levelChange('plus')">+</div>
+                    </div></div>
+                    <div class="oneLine"><p>選曲</p><div class="songSelector">
+                        <div class="selectorBtn player select" @click="changeSelector('player')">自薦</div>
+                        <div class="selectorBtn rival" @click="changeSelector('rival')">他薦</div>
+                    </div></div>
+                    <div class="oneLine"><p>ｵﾌﾟｼｮﾝ</p><div class="selOption">
+                        <div class="optBtn default select" @click="changeSelOption('default')">正</div>
+                        <div class="optBtn mirror" @click="changeSelOption('mirror')">鏡</div>
+                        <div class="optBtn random" @click="changeSelOption('random')">乱</div>
+                        <div class="optBtn r-random" @click="changeSelOption('r-random')">Ｒ</div>
+                        <div class="optBtn s-random" @click="changeSelOption('s-random')">Ｓ</div>
+                        
+                    </div></div>
+                    <div class="oneLine"><p>ｱﾘｰﾅﾗﾝｸ</p><div>
+                        <div class="minus" @click="rankChange('minus')">-</div>
+                        <div class="rankPrint">A5</div>
+                        <div class="plus" @click="rankChange('plus')">+</div>
+                    </div></div>
+                    <div><p>スコア</p><div class="selScore">
+                        <div class="scoreBtn rankMAX" @click="changeScore('rankMAX')">MAX-</div>
+                        <div class="scoreBtn rankAAA select" @click="changeScore('rankAAA')">AAA</div>
+                        <div class="scoreBtn rankAA" @click="changeScore('rankAA')">AA</div>
+                        <div class="scoreBtn rankA" @click="changeScore('rankA')">A</div>
+                        <div class="scoreBtn rankB" @click="changeScore('rankB')">B以下</div>
+                    </div></div>
+                    <div class="oneLine"><p>順位</p><div class="selGameRank">
+                        <div class="rankBtn first select" @click="changeGameRank('first')">1</div>
+                        <div class="rankBtn second" @click="changeGameRank('second')">2</div>
+                        <div class="rankBtn third" @click="changeGameRank('third')">3</div>
+                        <div class="rankBtn fourth" @click="changeGameRank('fourth')">4</div>
+                        
+                    </div></div>
+                    <div><p>メモ</p><input class="songmemo"></div>
+                </div>
+                <div class="registerBtn" @click="registerData()">登録</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/jquery-1.12.0.min.js"></script>
+<script src="./js/main.js"></script>
