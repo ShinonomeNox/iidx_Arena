@@ -261,21 +261,32 @@ body {
         overflow-y: scroll;
         & > .songDataHeader {
             display: flex;
-            width: 80vw;
+            width: 88vw;
             margin: auto;
             & > .songData--title {
-                width: 65vw;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                -moz-user-select: text;
-                -webkit-user-select: text;
-                -ms-user-select: text;
-                user-select: text;
+                width: 73vw;
+                display: flex;
+                & > p {
+                    width: 20vw;
+                    margin: 0;
+                    font-size: 17px;
+                }
+                & > .songTitleArea {
+                    width: 53vw;
+                    font-size: 17px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    -moz-user-select: text;
+                    -webkit-user-select: text;
+                    -ms-user-select: text;
+                    user-select: text;
+                }
+
             }
             & > .songData--playCnt {
                 width: 15vw;
-                font-size: 20px;
+                font-size: 17px;
             }
         }
         .rankCntArea {
