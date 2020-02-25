@@ -66,6 +66,16 @@ jQuery(function($){
         computed: {
         },
         methods: {
+            //theme
+            changeColorTheme: function(){
+                let theme = $('#main').attr('class');
+                let num = Number(theme.slice(-1));
+                console.log(num)
+                num = (num == 5) ? 0 : num;
+
+                $('#main').removeClass(theme);
+                $('#main').addClass(`theme${num + 1}`);
+            },
             //history
             loadHistory: function(){
                 $('.hisModal').css('display', 'block');

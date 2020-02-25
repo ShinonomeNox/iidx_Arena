@@ -1,3 +1,53 @@
+.theme1 .header {
+  background-color: #3282ff; }
+.theme1 .data {
+  background-color: #f1fbff; }
+.theme1 .hisTitle {
+  color: #3282ff;
+  border-bottom: 2px solid #3282ff; }
+.theme1 .modalArea {
+  background-color: #f1fbff; }
+
+.theme2 .header {
+  background-color: #b9b900; }
+.theme2 .data {
+  background-color: lightyellow; }
+.theme2 .hisTitle {
+  color: #b9b900;
+  border-bottom: 2px solid #b9b900; }
+.theme2 .modalArea {
+  background-color: lightyellow; }
+
+.theme3 .header {
+  background-color: #ff3232; }
+.theme3 .data {
+  background-color: #fff0f0; }
+.theme3 .hisTitle {
+  color: #ff3232;
+  border-bottom: 2px solid #ff3232; }
+.theme3 .modalArea {
+  background-color: #fff0f0; }
+
+.theme4 .header {
+  background-color: #e100ff; }
+.theme4 .data {
+  background-color: #fdefff; }
+.theme4 .hisTitle {
+  color: #e100ff;
+  border-bottom: 2px solid #e100ff; }
+.theme4 .modalArea {
+  background-color: #fdefff; }
+
+.theme5 .header {
+  background-color: #21c521; }
+.theme5 .data {
+  background-color: #ebffeb; }
+.theme5 .hisTitle {
+  color: #21c521;
+  border-bottom: 2px solid #21c521; }
+.theme5 .modalArea {
+  background-color: #ebffeb; }
+
 body {
   margin: 0;
   height: 90vh;
@@ -11,7 +61,6 @@ body {
   margin: 0;
   user-select: none; }
   #main > .header {
-    background-color: #3282ff;
     color: white;
     width: calc(100vw);
     height: 7vh;
@@ -34,7 +83,6 @@ body {
   #main > .data {
     height: 82vh;
     overflow-y: scroll;
-    background-color: #fdf2f5;
     text-align: left;
     font-size: 22px;
     font-weight: 800; }
@@ -96,7 +144,6 @@ body {
     position: absolute;
     top: 10vh;
     left: 5vw;
-    background-color: #fdf2f5;
     z-index: 100; }
     .modal > .modalArea .top {
       text-align: left;
@@ -154,16 +201,22 @@ body {
   .modal .hisArea {
     overflow-y: auto; }
     .modal .hisArea > .hisTitle {
-      text-align: center;
+      width: 86vw;
       margin: 0;
+      margin-left: 2vw;
+      margin-right: 2vw;
+      margin-top: 1vh;
+      line-height: 4vh;
+      text-align: left;
       font-weight: 700;
       font-size: 21px; }
     .modal .hisArea .rankCntArea {
-      margin-bottom: 1vh;
+      margin-bottom: 2vh;
+      padding-left: 4vw;
       display: flex;
       flex-wrap: wrap; }
       .modal .hisArea .rankCntArea > div {
-        width: 49%;
+        width: 48%;
         height: 5vh;
         margin: auto;
         display: flex; }
@@ -171,12 +224,12 @@ body {
           text-align: center;
           margin: 0;
           font-weight: 700;
-          font-size: 19px;
+          font-size: 18px;
           line-height: 5vh; }
         .modal .hisArea .rankCntArea > div > .per {
           text-align: center;
           margin: 0 auto;
-          font-size: 15px; }
+          font-size: 14px; }
     .modal .hisArea .musicRanking {
       display: flex; }
       .modal .hisArea .musicRanking p {
@@ -363,10 +416,10 @@ body {
     background-color: #ff3232 !important; }
 
 .hyper {
-  color: #c3c300; }
+  color: #b9b900; }
   .hyper--select {
     color: white;
-    background-color: #c3c300 !important; }
+    background-color: #b9b900 !important; }
 
 .normal {
   color: #3282ff; }

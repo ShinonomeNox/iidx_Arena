@@ -1,9 +1,10 @@
 $Header : rgb(50, 130, 255);
+$BGColor : rgb(241, 251, 255);
 $Line : rgb(165, 165, 165);
 
 $Legen : rgb(225, 0, 255);
 $Another : rgb(255, 50, 50);
-$Hyper : rgb(195, 195, 0);
+$Hyper : rgb(185, 185, 0);
 $Normal : rgb(50, 130, 255);
 $Begginer : rgb(33, 197, 33);
 
@@ -11,8 +12,47 @@ $White : rgb(255, 255, 255);
 $Black : rgb(0, 0, 0);
 $Yellow : rgb(255, 255, 100);
 
-$BGColor : rgb(253, 242, 245);
+
 $GrayClear : rgba(60, 60, 60, 0.6);
+
+@for $i from 1 to 6{
+    .theme#{$i} {
+        @if $i == 1 {
+            $Header : $Normal;
+            $BGColor : rgb(241, 251, 255);
+        }
+        @else if $i == 2 {
+            $Header : $Hyper;
+            $BGColor : rgb(255, 255, 224)
+        }
+        @else if $i == 3 {
+            $Header : $Another;
+            $BGColor : rgb(255, 240, 240);
+        }
+        @else if $i == 4 {
+            $Header : $Legen;
+            $BGColor : rgb(253, 239, 255);
+        }
+        @else {
+            $Header : $Begginer;
+            $BGColor : rgb(235, 255, 235);
+        }
+        
+        .header {
+            background-color: $Header;
+        }
+        .data {
+            background-color: $BGColor;
+        }
+        .hisTitle {
+            color: $Header;
+            border-bottom: 2px solid $Header;
+        }
+        .modalArea {
+            background-color: $BGColor;
+        }
+    }
+}
 
 body {
     margin: 0;
@@ -29,7 +69,6 @@ body {
     user-select: none;
 
     & > .header {
-        background-color: $Header;
         //border: 2px solid $Line;
         color: $White;
         width: calc(100vw);
@@ -60,7 +99,6 @@ body {
     & > .data {
         height: 82vh;
         overflow-y: scroll;
-        background-color: $BGColor;
         text-align: left;
         font-size: 22px;
         font-weight: 800;
@@ -134,7 +172,6 @@ body {
         position: absolute;
         top: 10vh;
         left: 5vw;
-        background-color: $BGColor;
         //border-radius: 25px;
         z-index: 100;
         .top {
@@ -208,19 +245,24 @@ body {
     }
     .hisArea {
         overflow-y: auto;
-        
         & > .hisTitle {
-            text-align: center;
+            width: 86vw;
             margin: 0;
+            margin-left: 2vw;
+            margin-right: 2vw;
+            margin-top: 1vh;
+            line-height: 4vh;
+            text-align: left;
             font-weight: 700;
             font-size: 21px;
         }
         .rankCntArea {
-            margin-bottom: 1vh;
+            margin-bottom: 2vh;
+            padding-left: 4vw;
             display: flex;
             flex-wrap: wrap;
             & > div {
-                width: 49%;
+                width: 48%;
                 height: 5vh;
                 margin: auto;
                 display: flex;
@@ -228,13 +270,13 @@ body {
                     text-align: center;
                     margin: 0;
                     font-weight: 700;
-                    font-size: 19px;
+                    font-size: 18px;
                     line-height: 5vh;
                 }
                 & > .per {
                     text-align: center;
                     margin: 0 auto;
-                    font-size: 15px;
+                    font-size: 14px;
                 }
             }
         }
