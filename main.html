@@ -13,9 +13,9 @@
 <body>
     <script type="text/x-template" id="musicdata-insert">
         <div id="modal-trigger" class="musicLineData" :style="diffColor" >
+            <div class="music__level" @click.self="open">☆{{data.level}}</div>
             <div class="music__title" @click.self="open">{{data.title}}</div>
             <div class="music__difficult" @click.self="open">({{data.difficult}})</div>
-            <div class="music__level" @click.self="open">☆{{data.level}}</div>
             <div class="music__cnt" @click.self="open">{{data.data.length}}</div>
             <div id="songDataModal">
                 <div class="modal songModal" v-show="opened" @click.self="close">
@@ -29,6 +29,7 @@
                             </div>
                         </div>
                         <div class="rankCntArea">
+                            <p class="areaTopTitle">総合順位回数</p>
                             <div class="rank" v-for="(rank, id) in rankCnt">
                                 <p>{{id + 1}}位 : {{rank}}回</p><p class="per">({{Math.round(rank/ data.data.length * 100)}}％)</p>
                             </div>
@@ -93,9 +94,9 @@
         </div>
         <div class="data">
             <div class="musicLineData">
+                <div class="music__level titleLV" @click="sortMusicLV()">ＬＶ</div>
                 <div class="music__title topTitle" @click="sortMusicName()">曲名<div class="sortPatternPrint">({{sortType}})</div></div>
                 <div class="music__difficult" @click="sortMusicDiff()">難度</div>
-                <div class="music__level titleLV" @click="sortMusicLV()">ＬＶ</div>
                 <div class="music__cnt titleCnt" @click="sortMusicCnt()">回数</div>
             </div>
             <musicdata-tmpl v-for="(data, item) in this.musicData" :data = "data" :item = "item"></musicdata-tmpl>
@@ -103,7 +104,7 @@
 
         <div class="modal addModal" @click.self="closeRegister()">
             <div class="modalArea addArea">
-                <div class="top">{{date}}</div>
+                <div class="top">記録 : {{date}}</div>
                 <div class="registerArea">
                     <div><p>曲名</p><input class="songname"></div>
                     <div class="oneLine"><p>難易度</p>
@@ -124,7 +125,7 @@
                         <div class="selectorBtn player select" @click="changeSelector('player')">自薦</div>
                         <div class="selectorBtn rival" @click="changeSelector('rival')">他薦</div>
                     </div></div>
-                    <div class="oneLine"><p>ｵﾌﾟｼｮﾝ</p><div class="selOption">
+                    <div class="oneLine"><p>オプション</p><div class="selOption">
                         <div class="optBtn default select" @click="changeSelOption('default')">正</div>
                         <div class="optBtn mirror" @click="changeSelOption('mirror')">鏡</div>
                         <div class="optBtn random" @click="changeSelOption('random')">乱</div>
@@ -132,7 +133,7 @@
                         <div class="optBtn s-random" @click="changeSelOption('s-random')">Ｓ</div>
                         
                     </div></div>
-                    <div class="oneLine"><p>ｱﾘｰﾅﾗﾝｸ</p><div>
+                    <div class="oneLine"><p>ランク</p><div>
                         <div class="minus" @click="rankChange('minus')">-</div>
                         <div class="rankPrint">A5</div>
                         <div class="plus" @click="rankChange('plus')">+</div>

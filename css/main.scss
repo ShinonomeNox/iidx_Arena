@@ -1,3 +1,19 @@
+$Header : rgb(50, 130, 255);
+$Line : rgb(165, 165, 165);
+
+$Legen : rgb(225, 0, 255);
+$Another : rgb(255, 50, 50);
+$Hyper : rgb(195, 195, 0);
+$Normal : rgb(50, 130, 255);
+$Begginer : rgb(33, 197, 33);
+
+$White : rgb(255, 255, 255);
+$Black : rgb(0, 0, 0);
+$Yellow : rgb(255, 255, 100);
+
+$BGColor : rgb(253, 242, 245);
+$GrayClear : rgba(60, 60, 60, 0.6);
+
 body {
     margin: 0;
     height: 90vh;
@@ -13,71 +29,88 @@ body {
     user-select: none;
 
     & > .header {
-        background-color: rgb(255, 90, 255);
-        border: 1px solid rgb(60, 20, 255);
-        color: rgb(255, 255, 255);
-        width: calc(100vw - 4px);
+        background-color: $Header;
+        //border: 2px solid $Line;
+        color: $White;
+        width: calc(100vw);
         height: 7vh;
         line-height: 7vh;
         text-align: center;
         font-size: 22px;
         font-weight: 800;
+        margin: 0;
         
         display: flex;
         & > .btnDiv {
-            width: 7vh;
-            border: 1px solid rgb(60, 20, 255);
+            width: calc(15vw - 4px);
+            border: 4px solid $Line;
         }
         & > .title {
-            width: 86vw;
-            border: 1px solid rgb(60, 20, 255);
+            width: calc(100vw - 30vw + 8px);
+            border: 4px solid $Line;
+        }
+        .historyBtn {
+            border-right: 0;
+        }
+        .addDataBtn {
+            border-left: 0;
         }
     }
 
     & > .data {
         height: 82vh;
         overflow-y: scroll;
-        background-color: rgb(255, 240, 255);
-        text-align: center;
+        background-color: $BGColor;
+        text-align: left;
         font-size: 22px;
         font-weight: 800;
         & > .musicLineData {
             display: flex;
             height: 6vh;
             line-height: 7vh;
-            border-bottom: 1px solid rgb(0, 0, 0);
+            width: 100vw;
 
             & > .music__title {
-                width: 60vw;
+                width: 55vw;
                 overflow: hidden;
+                border-left: 2px solid $Line;
+                border-bottom: 2px solid $Line;
                 text-overflow: ellipsis;
                 white-space: nowrap;
+                text-align: left;
+                padding-left: 3vw;
                 -moz-user-select: text;
                 -webkit-user-select: text;
                 -ms-user-select: text;
                 user-select: text;
             }
             & > .music__difficult {
-                border-left: 1px solid rgb(0, 0, 0);
-                width: 13vw;
+                border-left: 2px solid $Line;
+                border-bottom: 2px solid $Line;
+                width: 12vw;
+                text-align: center;
             }
             & > .music__level {
                 text-align: left;
-                border-left: 1px solid rgb(0, 0, 0);
-                width: 14vw;
+                border-left: 2px solid $Line;
+                border-bottom: 2px solid $Line;
+                width: calc(15vw - 2px);
             }
             & > .music__cnt {
-                text-align: center;
-                border-left: 1px solid rgb(0, 0, 0);
-                width: 13vw;
+                text-align: left;
+                border-left: 2px solid $Line;
+                border-right: 2px solid $Line;
+                border-bottom: 2px solid $Line;
+                padding-left: 1vw;
+                width: calc(14vw - 2px);
             }
             & > .titleLV {
                 text-align: center;
             }
             & > .topTitle {
                 display: flex;
-                padding-left: 10px;
-                width: calc(60vw - 10px);
+                padding-left: 5px;
+                width: calc(58vw - 5px);
                 & > .sortPatternPrint {
                     font-size: 16px;
                 }
@@ -87,7 +120,7 @@ body {
     }
 }
 .modal {
-    background-color: rgba(60, 60, 60, 0.6);
+    background-color: $GrayClear;
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -101,25 +134,29 @@ body {
         position: absolute;
         top: 10vh;
         left: 5vw;
-        background-color: rgb(255, 240, 255);
-        border-radius: 25px;
+        background-color: $BGColor;
+        //border-radius: 25px;
         z-index: 100;
         .top {
-            text-align: center;
+            text-align: left;
+            padding-left: 2vw;
+            font-weight: 700;
         }
         .registerArea {
-            padding-left: 10px;
-            padding-right: 10px;
+            padding-left: 4vw;
+            padding-right: 4vw;
             & > div {
                 height: 10vh;
                 margin-bottom: 1vh;
                 p {
-                    width: 30vw;
+                    width: calc(89vw - 30vh);
                     margin: 0;
+                    font-weight: 700;
                 }
                 input {
-                    width: 80vw;
+                    width: calc(82vw - 1px);
                     height: 5vh;
+                    border: 1px solid $Black;
                 }
                 & > div {
                     display: flex;
@@ -128,29 +165,29 @@ body {
                         height: 5vh;
                         text-align: center;
                         line-height: 5vh;
-                        border: 1px solid rgb(0, 0, 0);
+                        border: 1px solid $Black;
                         border-left: 0;
-                        background-color: rgb(255, 255, 255);
+                        background-color: $White;
                     }
                     & > div:first-child {
-                        border: 1px solid rgb(0, 0, 0);
+                        border: 1px solid $Black;
                     }
                     & > .selectorBtn {
-                        width: 12vh;
+                        width: calc(12.5vh + 1.5px);
                     }
                     .levelPrint, .rankPrint {
-                        background-color: rgb(255, 255, 255);
-                        width: 8vh;
+                        background-color: $White;
+                        width: calc(8.333333vh + 1px);
                     }
                     .minus, .plus {
-                        background-color: rgb(255, 255, 100);
-                        width: 8vh;
+                        background-color: $Yellow;
+                        width: calc(8.333333vh + 0.5px);
                     }
                     .scoreBtn {
                         width: 17vw;
                     }
                     .rankBtn {
-                        width: 6vh;
+                        width: calc(6.25vh + 0.75px);
                     }
                 }
             }
@@ -163,14 +200,15 @@ body {
             text-align: center;
             width: 33vw;
             margin: auto;
-            border: 1px solid rgb(0, 0, 0);
+            border: 1px solid $Black;
             background-color: rgb(255, 140, 40);
-            color: rgb(255, 255, 255);
+            color: $White;
             font-weight: 800;
         }
     }
     .hisArea {
         overflow-y: auto;
+        
         & > .hisTitle {
             text-align: center;
             margin: 0;
@@ -272,7 +310,8 @@ body {
                     font-size: 17px;
                 }
                 & > .songTitleArea {
-                    width: 53vw;
+                    width: 51vw;
+                    padding-left: 1vw;
                     font-size: 17px;
                     overflow: hidden;
                     text-overflow: ellipsis;
@@ -286,12 +325,17 @@ body {
             }
             & > .songData--playCnt {
                 width: 15vw;
-                font-size: 17px;
+                font-size: 21px;
+                margin-right: 1vw;
+                text-align: right;
             }
         }
         .rankCntArea {
             display: flex;
             flex-wrap: wrap;
+            padding-left: 2vw;
+            padding-right: 2vw;
+            margin-bottom: 3vh;
             & > div {
                 width: 49%;
                 margin: auto;
@@ -307,83 +351,116 @@ body {
                     font-size: 15px;
                 }
             }
+            & > p {
+                width: 100vw;
+                font-size: 17px;
+                line-height: 3vh;
+                margin: 0;
+                border-bottom: 2px solid ;
+             }
         }
 
         .optionDataScoreArea{
+            margin-bottom: 3vh;
+            padding-left: 2vw;
+            padding-right: 2vw;
             & > div {
                 display: flex;
                 font-size: 14px;
                 & > div {
                     width: 20%;
+                    padding-left: 1vw;
                     p {
-                        text-align: center;
+                        text-align: left;
                         margin: 0;
                         font-size: 14px;
                     }
                     div {
                         line-height: 3vh;
+                        text-align: left;
                     }
 
                     .opScore, .opRank {
                         display: flex;
                         margin: auto;
                         & > .opScRank {
-                            width: 11vw;
-                            font-size: 13px ;
+                            width: 9vw;
+                            font-size: 11px ;
                             text-align: left;
                         }
                         & > .opGaRank {
                             width: 7vw;
-                            margin-left: 3vw;
-                            font-size: 13px ;
+                            //margin-left: 3vw;
+                            font-size: 12px ;
                             text-align: left;
                         }
                         & > .opScCnt {
+                            //width: 7vw;
                             //width: 8vw;
-                            font-size: 13px;
+                            font-size: 11px;
                             text-align: left;
                         }
                     }
                 }
+                .opWinRate {
+                    border: 2px solid $GrayClear;
+                    border-top: 0;
+                    border-left: 0;
+                    
+                background-color: $White;
+                }
+                .opWinRate:first-child {
+                    border-left: 2px solid $GrayClear;
+                }
             }
              & > p {
                 font-size: 17px;
-                line-height: 4vh;
+                line-height: 3vh;
                 margin: 0;
+                border-bottom: 2px solid ;
              }
         }
 
         .DataHistory {
+            padding-left: 2vw;
+            padding-right: 2vw;
+            margin-bottom: 3vh;
             & > p {
                 font-size: 17px;
-                line-height: 4vh;
+                line-height: 3vh;
                 margin: 0;
+                border-bottom: 2px solid ;
             }
             & > .dataHisArea {
                 display: flex;
                 font-size: 14px;
                 flex-wrap: wrap;
                 margin-bottom: 1vh;
-                border-bottom: 1px solid rgba(60, 60, 60, 0.6);
+                border-bottom: 1px solid $GrayClear;
                 line-height: 3vh;
                 & > div {
-                    width: 9%;
+                    width: 10%;
+                    text-align: center;
                 }
                 & > .hisDate {
                     margin-left: 1%;
-                    width: 52%;
+                    width: 48%;
                     text-align: left;
+                    font-size: 12px;
                 }
                 & > .hisScore {
-                    width: 12%;
+                    width: 13%;
+                    text-align: center;
                 }
                 & > .hisOption {
-                    width: 6%;
+                    width: 8%;
+                    text-align: center;
                 }
                 & > .hisMemo{
                     margin-left: 2.5%;
                     width: 95%;
-                    color: rgb(255, 50, 50);
+                    color: $Another;
+                    text-align: left;
                 }
             }
         }
@@ -391,42 +468,44 @@ body {
 }
 
 .select {
-    color: rgb(255, 255, 255);
-    background-color: rgb(50, 130, 255) !important;
+    color: $White;
+    background-color: $Normal !important;
 }
 
+
+
 .another {
-    color: rgb(255, 50, 50);
+    color: $Another;
     &--select {
-        color: rgb(255, 255, 255);
-        background-color: rgb(255, 50, 50) !important;
+        color: $White;
+        background-color: $Another !important;
     }
 }
 .hyper {
-    color: rgb(185, 185, 0);
+    color: $Hyper;
     &--select {
-        color: rgb(255, 255, 255);
-        background-color: rgb(185, 185, 0) !important;
+        color: $White;
+        background-color: $Hyper !important;
     }
 }
 .normal {
-    color: rgb(0, 100, 255);
+    color: $Normal;
     &--select {
-        color: rgb(255, 255, 255);
-        background-color: rgb(0, 100, 255) !important;
+        color: $White;
+        background-color: $Normal !important;
     }
 }
 .begginer {
-    color: rgb(0, 205, 0);
+    color: $Begginer;
     &--select {
-        color: rgb(255, 255, 255);
-        background-color: rgb(0, 205, 0) !important;
+        color: $White;
+        background-color: $Begginer !important;
     }
 }
 .legen {
-    color: rgb(255, 0, 255);
+    color: $Legen;
     &--select {
-        color: rgb(255, 255, 255);
-        background-color: rgb(255, 0, 255) !important;
+        color: $White;
+        background-color: $Legen !important;
     }
 }

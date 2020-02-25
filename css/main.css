@@ -11,60 +11,74 @@ body {
   margin: 0;
   user-select: none; }
   #main > .header {
-    background-color: #ff5aff;
-    border: 1px solid #3c14ff;
+    background-color: #3282ff;
     color: white;
-    width: calc(100vw - 4px);
+    width: calc(100vw);
     height: 7vh;
     line-height: 7vh;
     text-align: center;
     font-size: 22px;
     font-weight: 800;
+    margin: 0;
     display: flex; }
     #main > .header > .btnDiv {
-      width: 7vh;
-      border: 1px solid #3c14ff; }
+      width: calc(15vw - 4px);
+      border: 4px solid #a5a5a5; }
     #main > .header > .title {
-      width: 86vw;
-      border: 1px solid #3c14ff; }
+      width: calc(100vw - 30vw + 8px);
+      border: 4px solid #a5a5a5; }
+    #main > .header .historyBtn {
+      border-right: 0; }
+    #main > .header .addDataBtn {
+      border-left: 0; }
   #main > .data {
     height: 82vh;
     overflow-y: scroll;
-    background-color: #fff0ff;
-    text-align: center;
+    background-color: #fdf2f5;
+    text-align: left;
     font-size: 22px;
     font-weight: 800; }
     #main > .data > .musicLineData {
       display: flex;
       height: 6vh;
       line-height: 7vh;
-      border-bottom: 1px solid black; }
+      width: 100vw; }
       #main > .data > .musicLineData > .music__title {
-        width: 60vw;
+        width: 55vw;
         overflow: hidden;
+        border-left: 2px solid #a5a5a5;
+        border-bottom: 2px solid #a5a5a5;
         text-overflow: ellipsis;
         white-space: nowrap;
+        text-align: left;
+        padding-left: 3vw;
         -moz-user-select: text;
         -webkit-user-select: text;
         -ms-user-select: text;
         user-select: text; }
       #main > .data > .musicLineData > .music__difficult {
-        border-left: 1px solid black;
-        width: 13vw; }
+        border-left: 2px solid #a5a5a5;
+        border-bottom: 2px solid #a5a5a5;
+        width: 12vw;
+        text-align: center; }
       #main > .data > .musicLineData > .music__level {
         text-align: left;
-        border-left: 1px solid black;
-        width: 14vw; }
+        border-left: 2px solid #a5a5a5;
+        border-bottom: 2px solid #a5a5a5;
+        width: calc(15vw - 2px); }
       #main > .data > .musicLineData > .music__cnt {
-        text-align: center;
-        border-left: 1px solid black;
-        width: 13vw; }
+        text-align: left;
+        border-left: 2px solid #a5a5a5;
+        border-right: 2px solid #a5a5a5;
+        border-bottom: 2px solid #a5a5a5;
+        padding-left: 1vw;
+        width: calc(14vw - 2px); }
       #main > .data > .musicLineData > .titleLV {
         text-align: center; }
       #main > .data > .musicLineData > .topTitle {
         display: flex;
-        padding-left: 10px;
-        width: calc(60vw - 10px); }
+        padding-left: 5px;
+        width: calc(58vw - 5px); }
         #main > .data > .musicLineData > .topTitle > .sortPatternPrint {
           font-size: 16px; }
 
@@ -82,23 +96,26 @@ body {
     position: absolute;
     top: 10vh;
     left: 5vw;
-    background-color: #fff0ff;
-    border-radius: 25px;
+    background-color: #fdf2f5;
     z-index: 100; }
     .modal > .modalArea .top {
-      text-align: center; }
+      text-align: left;
+      padding-left: 2vw;
+      font-weight: 700; }
     .modal > .modalArea .registerArea {
-      padding-left: 10px;
-      padding-right: 10px; }
+      padding-left: 4vw;
+      padding-right: 4vw; }
       .modal > .modalArea .registerArea > div {
         height: 10vh;
         margin-bottom: 1vh; }
         .modal > .modalArea .registerArea > div p {
-          width: 30vw;
-          margin: 0; }
+          width: calc(89vw - 30vh);
+          margin: 0;
+          font-weight: 700; }
         .modal > .modalArea .registerArea > div input {
-          width: 80vw;
-          height: 5vh; }
+          width: calc(82vw - 1px);
+          height: 5vh;
+          border: 1px solid black; }
         .modal > .modalArea .registerArea > div > div {
           display: flex; }
           .modal > .modalArea .registerArea > div > div > div {
@@ -112,17 +129,17 @@ body {
           .modal > .modalArea .registerArea > div > div > div:first-child {
             border: 1px solid black; }
           .modal > .modalArea .registerArea > div > div > .selectorBtn {
-            width: 12vh; }
+            width: calc(12.5vh + 1.5px); }
           .modal > .modalArea .registerArea > div > div .levelPrint, .modal > .modalArea .registerArea > div > div .rankPrint {
             background-color: white;
-            width: 8vh; }
+            width: calc(8.333333vh + 1px); }
           .modal > .modalArea .registerArea > div > div .minus, .modal > .modalArea .registerArea > div > div .plus {
             background-color: #ffff64;
-            width: 8vh; }
+            width: calc(8.333333vh + 0.5px); }
           .modal > .modalArea .registerArea > div > div .scoreBtn {
             width: 17vw; }
           .modal > .modalArea .registerArea > div > div .rankBtn {
-            width: 6vh; }
+            width: calc(6.25vh + 0.75px); }
       .modal > .modalArea .registerArea .oneLine {
         display: flex;
         height: 5vh; }
@@ -217,7 +234,8 @@ body {
           margin: 0;
           font-size: 17px; }
         .songModal > .songArea > .songDataHeader > .songData--title > .songTitleArea {
-          width: 53vw;
+          width: 51vw;
+          padding-left: 1vw;
           font-size: 17px;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -228,10 +246,15 @@ body {
           user-select: text; }
       .songModal > .songArea > .songDataHeader > .songData--playCnt {
         width: 15vw;
-        font-size: 17px; }
+        font-size: 21px;
+        margin-right: 1vw;
+        text-align: right; }
     .songModal > .songArea .rankCntArea {
       display: flex;
-      flex-wrap: wrap; }
+      flex-wrap: wrap;
+      padding-left: 2vw;
+      padding-right: 2vw;
+      margin-bottom: 3vh; }
       .songModal > .songArea .rankCntArea > div {
         width: 49%;
         margin: auto;
@@ -244,61 +267,90 @@ body {
           text-align: center;
           margin: 0 auto;
           font-size: 15px; }
-    .songModal > .songArea .optionDataScoreArea > div {
-      display: flex;
-      font-size: 14px; }
-      .songModal > .songArea .optionDataScoreArea > div > div {
-        width: 20%; }
-        .songModal > .songArea .optionDataScoreArea > div > div p {
-          text-align: center;
-          margin: 0;
-          font-size: 14px; }
-        .songModal > .songArea .optionDataScoreArea > div > div div {
-          line-height: 3vh; }
-        .songModal > .songArea .optionDataScoreArea > div > div .opScore, .songModal > .songArea .optionDataScoreArea > div > div .opRank {
-          display: flex;
-          margin: auto; }
-          .songModal > .songArea .optionDataScoreArea > div > div .opScore > .opScRank, .songModal > .songArea .optionDataScoreArea > div > div .opRank > .opScRank {
-            width: 11vw;
-            font-size: 13px;
+      .songModal > .songArea .rankCntArea > p {
+        width: 100vw;
+        font-size: 17px;
+        line-height: 3vh;
+        margin: 0;
+        border-bottom: 2px solid; }
+    .songModal > .songArea .optionDataScoreArea {
+      margin-bottom: 3vh;
+      padding-left: 2vw;
+      padding-right: 2vw; }
+      .songModal > .songArea .optionDataScoreArea > div {
+        display: flex;
+        font-size: 14px; }
+        .songModal > .songArea .optionDataScoreArea > div > div {
+          width: 20%;
+          padding-left: 1vw; }
+          .songModal > .songArea .optionDataScoreArea > div > div p {
+            text-align: left;
+            margin: 0;
+            font-size: 14px; }
+          .songModal > .songArea .optionDataScoreArea > div > div div {
+            line-height: 3vh;
             text-align: left; }
-          .songModal > .songArea .optionDataScoreArea > div > div .opScore > .opGaRank, .songModal > .songArea .optionDataScoreArea > div > div .opRank > .opGaRank {
-            width: 7vw;
-            margin-left: 3vw;
-            font-size: 13px;
-            text-align: left; }
-          .songModal > .songArea .optionDataScoreArea > div > div .opScore > .opScCnt, .songModal > .songArea .optionDataScoreArea > div > div .opRank > .opScCnt {
-            font-size: 13px;
-            text-align: left; }
-    .songModal > .songArea .optionDataScoreArea > p {
-      font-size: 17px;
-      line-height: 4vh;
-      margin: 0; }
-    .songModal > .songArea .DataHistory > p {
-      font-size: 17px;
-      line-height: 4vh;
-      margin: 0; }
-    .songModal > .songArea .DataHistory > .dataHisArea {
-      display: flex;
-      font-size: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 1vh;
-      border-bottom: 1px solid rgba(60, 60, 60, 0.6);
-      line-height: 3vh; }
-      .songModal > .songArea .DataHistory > .dataHisArea > div {
-        width: 9%; }
-      .songModal > .songArea .DataHistory > .dataHisArea > .hisDate {
-        margin-left: 1%;
-        width: 52%;
-        text-align: left; }
-      .songModal > .songArea .DataHistory > .dataHisArea > .hisScore {
-        width: 12%; }
-      .songModal > .songArea .DataHistory > .dataHisArea > .hisOption {
-        width: 6%; }
-      .songModal > .songArea .DataHistory > .dataHisArea > .hisMemo {
-        margin-left: 2.5%;
-        width: 95%;
-        color: #ff3232; }
+          .songModal > .songArea .optionDataScoreArea > div > div .opScore, .songModal > .songArea .optionDataScoreArea > div > div .opRank {
+            display: flex;
+            margin: auto; }
+            .songModal > .songArea .optionDataScoreArea > div > div .opScore > .opScRank, .songModal > .songArea .optionDataScoreArea > div > div .opRank > .opScRank {
+              width: 9vw;
+              font-size: 11px;
+              text-align: left; }
+            .songModal > .songArea .optionDataScoreArea > div > div .opScore > .opGaRank, .songModal > .songArea .optionDataScoreArea > div > div .opRank > .opGaRank {
+              width: 7vw;
+              font-size: 12px;
+              text-align: left; }
+            .songModal > .songArea .optionDataScoreArea > div > div .opScore > .opScCnt, .songModal > .songArea .optionDataScoreArea > div > div .opRank > .opScCnt {
+              font-size: 11px;
+              text-align: left; }
+        .songModal > .songArea .optionDataScoreArea > div .opWinRate {
+          border: 2px solid rgba(60, 60, 60, 0.6);
+          border-top: 0;
+          border-left: 0;
+          background-color: white; }
+        .songModal > .songArea .optionDataScoreArea > div .opWinRate:first-child {
+          border-left: 2px solid rgba(60, 60, 60, 0.6); }
+      .songModal > .songArea .optionDataScoreArea > p {
+        font-size: 17px;
+        line-height: 3vh;
+        margin: 0;
+        border-bottom: 2px solid; }
+    .songModal > .songArea .DataHistory {
+      padding-left: 2vw;
+      padding-right: 2vw;
+      margin-bottom: 3vh; }
+      .songModal > .songArea .DataHistory > p {
+        font-size: 17px;
+        line-height: 3vh;
+        margin: 0;
+        border-bottom: 2px solid; }
+      .songModal > .songArea .DataHistory > .dataHisArea {
+        display: flex;
+        font-size: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 1vh;
+        border-bottom: 1px solid rgba(60, 60, 60, 0.6);
+        line-height: 3vh; }
+        .songModal > .songArea .DataHistory > .dataHisArea > div {
+          width: 10%;
+          text-align: center; }
+        .songModal > .songArea .DataHistory > .dataHisArea > .hisDate {
+          margin-left: 1%;
+          width: 48%;
+          text-align: left;
+          font-size: 12px; }
+        .songModal > .songArea .DataHistory > .dataHisArea > .hisScore {
+          width: 13%;
+          text-align: center; }
+        .songModal > .songArea .DataHistory > .dataHisArea > .hisOption {
+          width: 8%;
+          text-align: center; }
+        .songModal > .songArea .DataHistory > .dataHisArea > .hisMemo {
+          margin-left: 2.5%;
+          width: 95%;
+          color: #ff3232;
+          text-align: left; }
 
 .select {
   color: white;
@@ -311,27 +363,27 @@ body {
     background-color: #ff3232 !important; }
 
 .hyper {
-  color: #b9b900; }
+  color: #c3c300; }
   .hyper--select {
     color: white;
-    background-color: #b9b900 !important; }
+    background-color: #c3c300 !important; }
 
 .normal {
-  color: #0064ff; }
+  color: #3282ff; }
   .normal--select {
     color: white;
-    background-color: #0064ff !important; }
+    background-color: #3282ff !important; }
 
 .begginer {
-  color: #00cd00; }
+  color: #21c521; }
   .begginer--select {
     color: white;
-    background-color: #00cd00 !important; }
+    background-color: #21c521 !important; }
 
 .legen {
-  color: magenta; }
+  color: #e100ff; }
   .legen--select {
     color: white;
-    background-color: magenta !important; }
+    background-color: #e100ff !important; }
 
 /*# sourceMappingURL=main.css.map */
