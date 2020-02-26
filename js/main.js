@@ -226,6 +226,7 @@ jQuery(function($){
             },
             registerData: function(){
                 inputData.title = $('.songname').val();
+                inputData.data[0].date = getNowDate();
                 inputData.data[0].memo = $('.songmemo').val();
                 if(inputData.title == ''){}
                 else{
@@ -483,7 +484,40 @@ jQuery(function($){
             },
             close: function(){
                 this.opened = false;
-            }
+            },
+            sameSongAddData: function(){
+                console.log(this.data);
+                
+                $('.songname').val(this.data.title);
+                $('.levelPrint').text(this.data.level);
+                $('.songmemo').val('');
+                let diffType = selectDiffColor(this.data.difficult);
+                console.log(diffType)
+                diffArr.forEach((val, id) => {
+                    $('.diffBtn').removeClass(`${val}--select`);
+                })
+                $(`.selDiff > .${diffType}`).addClass(`${diffType}--select`)
+                inputData = {
+                    'title': this.data.title,
+                    'difficult': 'A',
+                    'level': Number($('.levelPrint').text()),
+                    'data': [{
+                        'date': getNowDate(),
+                        'selector': $('.songSelector > .select').attr('class').split(' ')[1],
+                        'option': $('.selOption > .select').attr('class').split(' ')[1],
+                        'arenaRank': $('.rankPrint').text(),
+                        'scoreRank': $('.selScore > .select').attr('class').split(' ')[1],
+                        'gameRank': $('.selGameRank > .select').attr('class').split(' ')[1],
+                        'memo': ''
+                    }]
+                }
+
+                $('.addModal').css('display', 'block');
+
+            },
+            sameSongAddData: function(){
+                
+            },
         },
         created: function(){
             bus.$on('click.trigger', this.open);

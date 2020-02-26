@@ -1,5 +1,6 @@
 $Header : rgb(50, 130, 255);
 $BGColor : rgb(241, 251, 255);
+$BtnCol : rgb(255, 140, 40);
 $Line : rgb(165, 165, 165);
 
 $Legen : rgb(225, 0, 255);
@@ -14,6 +15,11 @@ $Yellow : rgb(255, 255, 100);
 
 
 $GrayClear : rgba(60, 60, 60, 0.6);
+
+@function responsive-fs($target-fs, $target-vw) {
+    $vw-ratio: $target-vw / 100;
+    @return $target-fs / $vw-ratio * 1vmin;
+}
 
 @for $i from 1 to 6{
     .theme#{$i} {
@@ -58,7 +64,7 @@ body {
     margin: 0;
     height: 90vh;
     width: 100vw;
-    font-size: 22px;
+    font-size: responsive-fs(22,375);
 }
 
 #main {
@@ -75,7 +81,7 @@ body {
         height: 7vh;
         line-height: 7vh;
         text-align: center;
-        font-size: 22px;
+        font-size: responsive-fs(22,375);
         font-weight: 800;
         margin: 0;
         
@@ -100,7 +106,7 @@ body {
         height: 82vh;
         overflow-y: scroll;
         text-align: left;
-        font-size: 22px;
+        font-size: responsive-fs(22,375);
         font-weight: 800;
         & > .musicLineData {
             display: flex;
@@ -129,7 +135,7 @@ body {
                 text-align: center;
             }
             & > .music__level {
-                text-align: left;
+                text-align: right;
                 border-left: 2px solid $Line;
                 border-bottom: 2px solid $Line;
                 width: calc(15vw - 2px);
@@ -150,7 +156,7 @@ body {
                 padding-left: 5px;
                 width: calc(58vw - 5px);
                 & > .sortPatternPrint {
-                    font-size: 16px;
+                    font-size: responsive-fs(16,375);
                 }
             }
 
@@ -238,7 +244,7 @@ body {
             width: 33vw;
             margin: auto;
             border: 1px solid $Black;
-            background-color: rgb(255, 140, 40);
+            background-color: $BtnCol;
             color: $White;
             font-weight: 800;
         }
@@ -254,7 +260,7 @@ body {
             line-height: 4vh;
             text-align: left;
             font-weight: 700;
-            font-size: 21px;
+            font-size: responsive-fs(21,375);
         }
         .rankCntArea {
             margin-bottom: 2vh;
@@ -270,13 +276,13 @@ body {
                     text-align: center;
                     margin: 0;
                     font-weight: 700;
-                    font-size: 18px;
+                    font-size: responsive-fs(18,375);
                     line-height: 5vh;
                 }
                 & > .per {
                     text-align: center;
                     margin: 0 auto;
-                    font-size: 14px;
+                    font-size: responsive-fs(14,375);
                 }
             }
         }
@@ -284,7 +290,7 @@ body {
             display: flex;
             p {
                 margin: 0;
-                font-size: 15px;
+                font-size: responsive-fs(15,375);
             }
             .avgRank {
                 width: 12%;
@@ -349,12 +355,12 @@ body {
                 & > p {
                     width: 20vw;
                     margin: 0;
-                    font-size: 17px;
+                    font-size: responsive-fs(17,375);
                 }
                 & > .songTitleArea {
                     width: 51vw;
                     padding-left: 1vw;
-                    font-size: 17px;
+                    font-size: responsive-fs(17,375);
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
@@ -367,11 +373,34 @@ body {
             }
             & > .songData--playCnt {
                 width: 15vw;
-                font-size: 21px;
+                font-size: responsive-fs(21,375);
                 margin-right: 1vw;
                 text-align: right;
             }
         }
+
+        .sameSongAddDataArea {
+            width: 60%;
+            height: 5vh;
+            padding-right: 2vw;
+            margin: 0;
+            margin-left: auto;
+            display: flex;
+            & > div {
+                width: 40%;
+                height: 4vh;
+                line-height: 4vh;
+                margin: 0;
+                margin-left: auto;
+                font-size: responsive-fs(15,375);
+                border: 1px solid $GrayClear;
+                background-color: $BtnCol;
+                color: $White;
+                text-align: center;
+                font-weight: 800;
+            }
+        }
+
         .rankCntArea {
             display: flex;
             flex-wrap: wrap;
@@ -385,17 +414,17 @@ body {
                 & > p {
                     text-align: center;
                     margin: 0;
-                    font-size: 20px;
+                    font-size: responsive-fs(20,375);
                 }
                 & > .per {
                     text-align: center;
                     margin: 0 auto;
-                    font-size: 15px;
+                    font-size: responsive-fs(15,375);
                 }
             }
             & > p {
                 width: 100vw;
-                font-size: 17px;
+                font-size: responsive-fs(17,375);
                 line-height: 3vh;
                 margin: 0;
                 border-bottom: 2px solid ;
@@ -408,14 +437,14 @@ body {
             padding-right: 2vw;
             & > div {
                 display: flex;
-                font-size: 14px;
+                font-size: responsive-fs(14,375);
                 & > div {
                     width: 20%;
                     padding-left: 1vw;
                     p {
                         text-align: left;
                         margin: 0;
-                        font-size: 14px;
+                        font-size: responsive-fs(14,375);
                     }
                     div {
                         line-height: 3vh;
@@ -427,19 +456,19 @@ body {
                         margin: auto;
                         & > .opScRank {
                             width: 9vw;
-                            font-size: 11px ;
+                            font-size: responsive-fs(11,375);
                             text-align: left;
                         }
                         & > .opGaRank {
                             width: 7vw;
                             //margin-left: 3vw;
-                            font-size: 12px ;
+                            font-size: responsive-fs(12,375);
                             text-align: left;
                         }
                         & > .opScCnt {
                             //width: 7vw;
                             //width: 8vw;
-                            font-size: 11px;
+                            font-size: responsive-fs(11,375);
                             text-align: left;
                         }
                     }
@@ -456,7 +485,7 @@ body {
                 }
             }
              & > p {
-                font-size: 17px;
+                font-size: responsive-fs(17,375);
                 line-height: 3vh;
                 margin: 0;
                 border-bottom: 2px solid ;
@@ -468,14 +497,14 @@ body {
             padding-right: 2vw;
             margin-bottom: 3vh;
             & > p {
-                font-size: 17px;
+                font-size: responsive-fs(17,375);
                 line-height: 3vh;
                 margin: 0;
                 border-bottom: 2px solid ;
             }
             & > .dataHisArea {
                 display: flex;
-                font-size: 14px;
+                font-size: responsive-fs(14,375);
                 flex-wrap: wrap;
                 margin-bottom: 1vh;
                 border-bottom: 1px solid $GrayClear;
@@ -488,7 +517,7 @@ body {
                     margin-left: 1%;
                     width: 48%;
                     text-align: left;
-                    font-size: 12px;
+                    font-size: responsive-fs(12,375);
                 }
                 & > .hisScore {
                     width: 13%;

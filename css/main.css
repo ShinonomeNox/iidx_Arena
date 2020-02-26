@@ -52,7 +52,7 @@ body {
   margin: 0;
   height: 90vh;
   width: 100vw;
-  font-size: 22px; }
+  font-size: 5.8666666667vmin; }
 
 #main {
   height: 90vh;
@@ -66,7 +66,7 @@ body {
     height: 7vh;
     line-height: 7vh;
     text-align: center;
-    font-size: 22px;
+    font-size: 5.8666666667vmin;
     font-weight: 800;
     margin: 0;
     display: flex; }
@@ -84,7 +84,7 @@ body {
     height: 82vh;
     overflow-y: scroll;
     text-align: left;
-    font-size: 22px;
+    font-size: 5.8666666667vmin;
     font-weight: 800; }
     #main > .data > .musicLineData {
       display: flex;
@@ -110,7 +110,7 @@ body {
         width: 12vw;
         text-align: center; }
       #main > .data > .musicLineData > .music__level {
-        text-align: left;
+        text-align: right;
         border-left: 2px solid #a5a5a5;
         border-bottom: 2px solid #a5a5a5;
         width: calc(15vw - 2px); }
@@ -128,7 +128,7 @@ body {
         padding-left: 5px;
         width: calc(58vw - 5px); }
         #main > .data > .musicLineData > .topTitle > .sortPatternPrint {
-          font-size: 16px; }
+          font-size: 4.2666666667vmin; }
 
 .modal {
   background-color: rgba(60, 60, 60, 0.6);
@@ -209,7 +209,7 @@ body {
       line-height: 4vh;
       text-align: left;
       font-weight: 700;
-      font-size: 21px; }
+      font-size: 5.6vmin; }
     .modal .hisArea .rankCntArea {
       margin-bottom: 2vh;
       padding-left: 4vw;
@@ -224,17 +224,17 @@ body {
           text-align: center;
           margin: 0;
           font-weight: 700;
-          font-size: 18px;
+          font-size: 4.8vmin;
           line-height: 5vh; }
         .modal .hisArea .rankCntArea > div > .per {
           text-align: center;
           margin: 0 auto;
-          font-size: 14px; }
+          font-size: 3.7333333333vmin; }
     .modal .hisArea .musicRanking {
       display: flex; }
       .modal .hisArea .musicRanking p {
         margin: 0;
-        font-size: 15px; }
+        font-size: 4vmin; }
       .modal .hisArea .musicRanking .avgRank {
         width: 12%;
         margin-right: 3%;
@@ -285,11 +285,11 @@ body {
         .songModal > .songArea > .songDataHeader > .songData--title > p {
           width: 20vw;
           margin: 0;
-          font-size: 17px; }
+          font-size: 4.5333333333vmin; }
         .songModal > .songArea > .songDataHeader > .songData--title > .songTitleArea {
           width: 51vw;
           padding-left: 1vw;
-          font-size: 17px;
+          font-size: 4.5333333333vmin;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -299,9 +299,28 @@ body {
           user-select: text; }
       .songModal > .songArea > .songDataHeader > .songData--playCnt {
         width: 15vw;
-        font-size: 21px;
+        font-size: 5.6vmin;
         margin-right: 1vw;
         text-align: right; }
+    .songModal > .songArea .sameSongAddDataArea {
+      width: 60%;
+      height: 5vh;
+      padding-right: 2vw;
+      margin: 0;
+      margin-left: auto;
+      display: flex; }
+      .songModal > .songArea .sameSongAddDataArea > div {
+        width: 40%;
+        height: 4vh;
+        line-height: 4vh;
+        margin: 0;
+        margin-left: auto;
+        font-size: 4vmin;
+        border: 1px solid rgba(60, 60, 60, 0.6);
+        background-color: #ff8c28;
+        color: white;
+        text-align: center;
+        font-weight: 800; }
     .songModal > .songArea .rankCntArea {
       display: flex;
       flex-wrap: wrap;
@@ -315,14 +334,14 @@ body {
         .songModal > .songArea .rankCntArea > div > p {
           text-align: center;
           margin: 0;
-          font-size: 20px; }
+          font-size: 5.3333333333vmin; }
         .songModal > .songArea .rankCntArea > div > .per {
           text-align: center;
           margin: 0 auto;
-          font-size: 15px; }
+          font-size: 4vmin; }
       .songModal > .songArea .rankCntArea > p {
         width: 100vw;
-        font-size: 17px;
+        font-size: 4.5333333333vmin;
         line-height: 3vh;
         margin: 0;
         border-bottom: 2px solid; }
@@ -332,14 +351,14 @@ body {
       padding-right: 2vw; }
       .songModal > .songArea .optionDataScoreArea > div {
         display: flex;
-        font-size: 14px; }
+        font-size: 3.7333333333vmin; }
         .songModal > .songArea .optionDataScoreArea > div > div {
           width: 20%;
           padding-left: 1vw; }
           .songModal > .songArea .optionDataScoreArea > div > div p {
             text-align: left;
             margin: 0;
-            font-size: 14px; }
+            font-size: 3.7333333333vmin; }
           .songModal > .songArea .optionDataScoreArea > div > div div {
             line-height: 3vh;
             text-align: left; }
@@ -348,14 +367,14 @@ body {
             margin: auto; }
             .songModal > .songArea .optionDataScoreArea > div > div .opScore > .opScRank, .songModal > .songArea .optionDataScoreArea > div > div .opRank > .opScRank {
               width: 9vw;
-              font-size: 11px;
+              font-size: 2.9333333333vmin;
               text-align: left; }
             .songModal > .songArea .optionDataScoreArea > div > div .opScore > .opGaRank, .songModal > .songArea .optionDataScoreArea > div > div .opRank > .opGaRank {
               width: 7vw;
-              font-size: 12px;
+              font-size: 3.2vmin;
               text-align: left; }
             .songModal > .songArea .optionDataScoreArea > div > div .opScore > .opScCnt, .songModal > .songArea .optionDataScoreArea > div > div .opRank > .opScCnt {
-              font-size: 11px;
+              font-size: 2.9333333333vmin;
               text-align: left; }
         .songModal > .songArea .optionDataScoreArea > div .opWinRate {
           border: 2px solid rgba(60, 60, 60, 0.6);
@@ -365,7 +384,7 @@ body {
         .songModal > .songArea .optionDataScoreArea > div .opWinRate:first-child {
           border-left: 2px solid rgba(60, 60, 60, 0.6); }
       .songModal > .songArea .optionDataScoreArea > p {
-        font-size: 17px;
+        font-size: 4.5333333333vmin;
         line-height: 3vh;
         margin: 0;
         border-bottom: 2px solid; }
@@ -374,13 +393,13 @@ body {
       padding-right: 2vw;
       margin-bottom: 3vh; }
       .songModal > .songArea .DataHistory > p {
-        font-size: 17px;
+        font-size: 4.5333333333vmin;
         line-height: 3vh;
         margin: 0;
         border-bottom: 2px solid; }
       .songModal > .songArea .DataHistory > .dataHisArea {
         display: flex;
-        font-size: 14px;
+        font-size: 3.7333333333vmin;
         flex-wrap: wrap;
         margin-bottom: 1vh;
         border-bottom: 1px solid rgba(60, 60, 60, 0.6);
@@ -392,7 +411,7 @@ body {
           margin-left: 1%;
           width: 48%;
           text-align: left;
-          font-size: 12px; }
+          font-size: 3.2vmin; }
         .songModal > .songArea .DataHistory > .dataHisArea > .hisScore {
           width: 13%;
           text-align: center; }

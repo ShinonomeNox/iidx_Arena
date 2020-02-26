@@ -28,6 +28,10 @@
                                 {{data.data.length}}回
                             </div>
                         </div>
+                        <div class="sameSongAddDataArea">
+                            <div class="sameSongAddDataBtn" @click="sameSongAddData()">データ追加</div>
+                            <div class="sameSongFixDataBtn" @click="sameSongFixData()">データ修正</div>
+                        </div>
                         <div class="rankCntArea">
                             <p class="areaTopTitle">総合順位回数</p>
                             <div class="rank" v-for="(rank, id) in rankCnt">
