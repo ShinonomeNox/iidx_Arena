@@ -7,6 +7,12 @@
   border-bottom: 2px solid #3282ff; }
 .theme1 .modalArea {
   background-color: #f1fbff; }
+.theme1 .sameSongAddDataArea > div {
+  background-color: #3282ff; }
+.theme1 .registerBtn, .theme1 .fixBtn {
+  background-color: #3282ff; }
+.theme1 .topMusicMenu {
+  background-color: #f1fbff; }
 
 .theme2 .header {
   background-color: #b9b900; }
@@ -16,6 +22,12 @@
   color: #b9b900;
   border-bottom: 2px solid #b9b900; }
 .theme2 .modalArea {
+  background-color: lightyellow; }
+.theme2 .sameSongAddDataArea > div {
+  background-color: #b9b900; }
+.theme2 .registerBtn, .theme2 .fixBtn {
+  background-color: #b9b900; }
+.theme2 .topMusicMenu {
   background-color: lightyellow; }
 
 .theme3 .header {
@@ -27,6 +39,12 @@
   border-bottom: 2px solid #ff3232; }
 .theme3 .modalArea {
   background-color: #fff0f0; }
+.theme3 .sameSongAddDataArea > div {
+  background-color: #ff3232; }
+.theme3 .registerBtn, .theme3 .fixBtn {
+  background-color: #ff3232; }
+.theme3 .topMusicMenu {
+  background-color: #fff0f0; }
 
 .theme4 .header {
   background-color: #e100ff; }
@@ -37,6 +55,12 @@
   border-bottom: 2px solid #e100ff; }
 .theme4 .modalArea {
   background-color: #fdefff; }
+.theme4 .sameSongAddDataArea > div {
+  background-color: #e100ff; }
+.theme4 .registerBtn, .theme4 .fixBtn {
+  background-color: #e100ff; }
+.theme4 .topMusicMenu {
+  background-color: #fdefff; }
 
 .theme5 .header {
   background-color: #21c521; }
@@ -46,6 +70,12 @@
   color: #21c521;
   border-bottom: 2px solid #21c521; }
 .theme5 .modalArea {
+  background-color: #ebffeb; }
+.theme5 .sameSongAddDataArea > div {
+  background-color: #21c521; }
+.theme5 .registerBtn, .theme5 .fixBtn {
+  background-color: #21c521; }
+.theme5 .topMusicMenu {
   background-color: #ebffeb; }
 
 body {
@@ -84,22 +114,25 @@ body {
     height: 82vh;
     overflow-y: scroll;
     text-align: left;
-    font-size: 5.8666666667vmin;
+    font-size: 4.5333333333vmin;
     font-weight: 800; }
+    #main > .data .topMusicMenu {
+      position: fixed;
+      z-index: 1; }
     #main > .data > .musicLineData {
       display: flex;
       height: 6vh;
       line-height: 7vh;
       width: 100vw; }
       #main > .data > .musicLineData > .music__title {
-        width: 55vw;
+        width: 66vw;
         overflow: hidden;
         border-left: 2px solid #a5a5a5;
         border-bottom: 2px solid #a5a5a5;
         text-overflow: ellipsis;
         white-space: nowrap;
         text-align: left;
-        padding-left: 3vw;
+        padding-left: 1vw;
         -moz-user-select: text;
         -webkit-user-select: text;
         -ms-user-select: text;
@@ -107,26 +140,33 @@ body {
       #main > .data > .musicLineData > .music__difficult {
         border-left: 2px solid #a5a5a5;
         border-bottom: 2px solid #a5a5a5;
-        width: 12vw;
-        text-align: center; }
+        width: 11vw;
+        text-align: center;
+        font-size: 4.2666666667vmin; }
       #main > .data > .musicLineData > .music__level {
         text-align: right;
         border-left: 2px solid #a5a5a5;
         border-bottom: 2px solid #a5a5a5;
-        width: calc(15vw - 2px); }
+        padding-right: 1vw;
+        width: calc(12vw - 2px);
+        font-size: 4.2666666667vmin; }
       #main > .data > .musicLineData > .music__cnt {
         text-align: left;
         border-left: 2px solid #a5a5a5;
         border-right: 2px solid #a5a5a5;
         border-bottom: 2px solid #a5a5a5;
         padding-left: 1vw;
-        width: calc(14vw - 2px); }
+        width: calc(11vw - 2px);
+        font-size: 4.2666666667vmin; }
       #main > .data > .musicLineData > .titleLV {
         text-align: center; }
+      #main > .data > .musicLineData > .topMenu {
+        font-size: 4.5333333333vmin; }
       #main > .data > .musicLineData > .topTitle {
         display: flex;
         padding-left: 5px;
-        width: calc(58vw - 5px); }
+        width: calc(67vw - 5px);
+        font-size: 4.8vmin; }
         #main > .data > .musicLineData > .topTitle > .sortPatternPrint {
           font-size: 4.2666666667vmin; }
 
@@ -137,7 +177,8 @@ body {
   position: absolute;
   display: none;
   top: 0;
-  left: 0; }
+  left: 0;
+  z-index: 10; }
   .modal > .modalArea {
     width: 90vw;
     height: 80vh;
@@ -162,7 +203,8 @@ body {
         .modal > .modalArea .registerArea > div input {
           width: calc(82vw - 1px);
           height: 5vh;
-          border: 1px solid black; }
+          border: 1px solid black;
+          font-size: 5.0666666667vmin; }
         .modal > .modalArea .registerArea > div > div {
           display: flex; }
           .modal > .modalArea .registerArea > div > div > div {
@@ -177,7 +219,7 @@ body {
             border: 1px solid black; }
           .modal > .modalArea .registerArea > div > div > .selectorBtn {
             width: calc(12.5vh + 1.5px); }
-          .modal > .modalArea .registerArea > div > div .levelPrint, .modal > .modalArea .registerArea > div > div .rankPrint {
+          .modal > .modalArea .registerArea > div > div .levelPrint, .modal > .modalArea .registerArea > div > div .levelPrintForRename, .modal > .modalArea .registerArea > div > div .rankPrint {
             background-color: white;
             width: calc(8.333333vh + 1px); }
           .modal > .modalArea .registerArea > div > div .minus, .modal > .modalArea .registerArea > div > div .plus {
@@ -190,14 +232,15 @@ body {
       .modal > .modalArea .registerArea .oneLine {
         display: flex;
         height: 5vh; }
-    .modal > .modalArea .registerBtn {
+    .modal > .modalArea .registerBtn, .modal > .modalArea .fixBtn {
       text-align: center;
       width: 33vw;
       margin: auto;
       border: 1px solid black;
-      background-color: #ff8c28;
       color: white;
       font-weight: 800; }
+    .modal > .modalArea .fixBtn {
+      display: none; }
   .modal .hisArea {
     overflow-y: auto; }
     .modal .hisArea > .hisTitle {
@@ -271,6 +314,39 @@ body {
           margin-right: 0%;
           font-weight: 600; }
 
+.delModal {
+  background-color: rgba(60, 60, 60, 0.6);
+  z-index: 101; }
+  .delModal > .delArea {
+    z-index: 102;
+    height: 50vh;
+    top: 25vh;
+    left: 2.5vw;
+    border: 5px solid #ff3232; }
+    .delModal > .delArea > div {
+      padding: 8px; }
+      .delModal > .delArea > div > .deleteTitle {
+        color: #ff3232;
+        display: flex; }
+        .delModal > .delArea > div > .deleteTitle > p {
+          margin: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap; }
+        .delModal > .delArea > div > .deleteTitle > .delSongTitle {
+          max-width: 85%; }
+
+.renameModal {
+  background-color: rgba(60, 60, 60, 0.6);
+  z-index: 101; }
+  .renameModal > .renameArea {
+    z-index: 102;
+    height: 30vh;
+    top: 35vh; }
+    .renameModal > .renameArea > div:first-child {
+      padding-left: 4vw;
+      font-weight: 800; }
+
 .songModal {
   display: block; }
   .songModal > .songArea {
@@ -283,13 +359,13 @@ body {
         width: 73vw;
         display: flex; }
         .songModal > .songArea > .songDataHeader > .songData--title > p {
-          width: 20vw;
+          width: 16vw;
           margin: 0;
-          font-size: 4.5333333333vmin; }
+          font-size: 3.7333333333vmin; }
         .songModal > .songArea > .songDataHeader > .songData--title > .songTitleArea {
-          width: 51vw;
+          width: 70vw;
           padding-left: 1vw;
-          font-size: 4.5333333333vmin;
+          font-size: 3.7333333333vmin;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -298,26 +374,27 @@ body {
           -ms-user-select: text;
           user-select: text; }
       .songModal > .songArea > .songDataHeader > .songData--playCnt {
-        width: 15vw;
-        font-size: 5.6vmin;
+        width: 11vw;
+        font-size: 3.7333333333vmin;
         margin-right: 1vw;
         text-align: right; }
     .songModal > .songArea .sameSongAddDataArea {
-      width: 60%;
-      height: 5vh;
+      width: 90%;
+      height: 10vh;
       padding-right: 2vw;
       margin: 0;
       margin-left: auto;
-      display: flex; }
+      margin-bottom: 1vh;
+      display: flex;
+      flex-wrap: wrap; }
       .songModal > .songArea .sameSongAddDataArea > div {
-        width: 40%;
+        width: 45%;
         height: 4vh;
         line-height: 4vh;
         margin: 0;
         margin-left: auto;
-        font-size: 4vmin;
+        font-size: 4.2666666667vmin;
         border: 1px solid rgba(60, 60, 60, 0.6);
-        background-color: #ff8c28;
         color: white;
         text-align: center;
         font-weight: 800; }

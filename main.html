@@ -29,8 +29,10 @@
                             </div>
                         </div>
                         <div class="sameSongAddDataArea">
-                            <div class="sameSongAddDataBtn" @click="sameSongAddData()">データ追加</div>
-                            <div class="sameSongFixDataBtn" @click="sameSongFixData()">データ修正</div>
+                            <div class="sameSongAddDataBtn" @click="sameSongAddData()">プレーデータ追加</div>
+                            <div class="sameSongFixDataBtn" @click="sameSongFixData()">最新データ修正</div>
+                            <div class="sameSongRenameDataBtn" @click="sameSongRenameData()">基本データ修正</div>
+                            <div class="sameSongDelDataBtn" @click="sameSongDeleteData()">楽曲データ削除</div>
                         </div>
                         <div class="rankCntArea">
                             <p class="areaTopTitle">総合順位回数</p>
@@ -97,12 +99,13 @@
             <div class="addDataBtn btnDiv" @click="addMusicData()">+</div>
         </div>
         <div class="data">
-            <div class="musicLineData">
-                <div class="music__level titleLV" @click="sortMusicLV()">ＬＶ</div>
+            <div class="musicLineData topMusicMenu">
+                <div class="music__level titleLV topMenu" @click="sortMusicLV()">ＬＶ</div>
                 <div class="music__title topTitle" @click="sortMusicName()">曲名<div class="sortPatternPrint">({{sortType}})</div></div>
-                <div class="music__difficult" @click="sortMusicDiff()">難度</div>
-                <div class="music__cnt titleCnt" @click="sortMusicCnt()">回数</div>
+                <div class="music__difficult topMenu" @click="sortMusicDiff()">難度</div>
+                <div class="music__cnt titleCnt topMenu" @click="sortMusicCnt()">回数</div>
             </div>
+            <div class="musicLineData "></div>
             <musicdata-tmpl v-for="(data, item) in this.musicData" :data = "data" :item = "item"></musicdata-tmpl>
         </div>
 
@@ -159,8 +162,34 @@
                     <div><p>メモ</p><input class="songmemo"></div>
                 </div>
                 <div class="registerBtn" @click="registerData()">登録</div>
+                <div class="fixBtn" @click="fixData()">修正</div>
             </div>
         </div>
+        <div class="modal delModal" @click.self="closeDelete()">
+            <div class="modalArea delArea">
+                <div>
+                    <div class="deleteTitle"><p class="delSongTitle"></p>(<p class="delSongDiff"></p>)</div><div>に登録されているデータ全てを削除します｡</div>
+                </div>
+                <div>本当に削除する場合のみ下の削除ボタンを押してください｡</div>
+                <div>消さない場合は､このまま閉じてください｡</div>
+                <div class="registerBtn" @click="DeleteData()">削除</div>
+            </div>
+        </div>
+        <div class="modal renameModal" @click.self="closeRename()">
+            <div class="modalArea renameArea">
+                <div>基本データ修正</div>
+                <div class="registerArea">
+                    <div><p>曲名</p><input class="songnameForRename"></div>
+                    <div class="oneLine"><p>レベル</p><div class="selLevel">
+                        <div class="minus" @click="levelChangeForRename('minus')">-</div>
+                        <div class="levelPrintForRename">12</div>
+                        <div class="plus" @click="levelChangeForRename('plus')">+</div>
+                    </div></div>
+                </div>
+                <div class="registerBtn" @click="renameData()">修正</div>
+            </div>
+        </div>
+
         <div class="modal hisModal" @click.self="closeHistory()">
             <div class="modalArea hisArea" v-bind="results">
                 <div class="hisTitle">通算成績詳細  (平均順位:{{totalAvg}})</div>

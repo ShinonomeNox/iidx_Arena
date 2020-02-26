@@ -5,6 +5,7 @@ jQuery(function($){
     const optionArr = ['default', 'mirror', 'random', 'r-random', 's-random'];
     const scoreRankArr = ['MAX-', 'AAA', 'AA', 'A', 'B以下'];
     let inputData = {};
+    let renameBase = {};
     const getNowDate = function(){
         let now = new Date();
         let Year = "" +now.getFullYear();
@@ -181,6 +182,51 @@ jQuery(function($){
             },
             closeRegister: function(){
                 $('.addModal').css('display', 'none');
+                $('.registerBtn').css('display', 'block');
+                $('.fixBtn').css('display', 'none');
+            },
+            closeDelete: function(){
+                $('.delModal').css('display', 'none');
+            },
+            closeRename: function(){
+                $('.renameModal').css('display', 'none');
+            },
+            renameData: function(){
+                this.musicData = JSON.parse(localStorage.getItem('musicdata'));
+                if(this.musicData == void 0){
+                    this.musicData = [];
+                }
+                let index = this.musicData.findIndex(item => {
+                    if(item.title === renameBase.title && item.difficult === renameBase.diff) return true;
+                })
+                if(index === -1){
+                } else {
+                    console.log(this.musicData[index]);
+                    console.log($('.songnameForRename').val());
+                    this.musicData[index].title =  $('.songnameForRename').val();
+                    this.musicData[index].difficult = renameBase.diff;
+                    this.musicData[index].level = Number($('.levelPrintForRename').text());
+                }
+                localStorage.setItem('musicdata', JSON.stringify(this.musicData));
+                $('.renameModal').css('display', 'none');
+            },
+            DeleteData: function(){
+                let deleteTitle = $('.delSongTitle').text();
+                let deleteDiff = $('.delSongDiff').text();
+                this.musicData = JSON.parse(localStorage.getItem('musicdata'));
+                if(this.musicData == void 0){
+                    this.musicData = [];
+                }
+                let index = this.musicData.findIndex(item => {
+                    if(item.title === deleteTitle && item.difficult === deleteDiff) return true;
+                })
+                if(index === -1){
+                } else {
+                    console.log(index)
+                    this.musicData.splice(index, 1);
+                }
+                localStorage.setItem('musicdata', JSON.stringify(this.musicData));
+                $('.delModal').css('display', 'none');
             },
             changeSelDiff: function(type){
                 console.log(type)
@@ -202,9 +248,20 @@ jQuery(function($){
             },
             levelChange: function(type){
                 let level = Number($('.levelPrint').text());
+                console.log("level -> ")
+                console.log(level)
                 let diff = (type == 'plus') ? 1 : -1 ;
                 if(level + diff < 13 && level + diff > 0) level += diff;
                 $('.levelPrint').text(level);
+                inputData.level = level;
+            },
+            levelChangeForRename: function(type){
+                let level = Number($('.levelPrintForRename').text());
+                console.log("level -> ")
+                console.log(level)
+                let diff = (type == 'plus') ? 1 : -1 ;
+                if(level + diff < 13 && level + diff > 0) level += diff;
+                $('.levelPrintForRename').text(level);
                 inputData.level = level;
             },
             rankChange: function(type){
@@ -245,6 +302,31 @@ jQuery(function($){
                     localStorage.setItem('musicdata', JSON.stringify(this.musicData));
                     $('.addModal').css('display', 'none');
                 }
+            },
+            fixData: function(){
+                inputData.title = $('.songname').val();
+                inputData.data[0].date = getNowDate();
+                inputData.data[0].memo = $('.songmemo').val();
+                if(inputData.title == ''){}
+                else{
+                    this.musicData = JSON.parse(localStorage.getItem('musicdata'));
+                    if(this.musicData == void 0){
+                        this.musicData = [];
+                    }
+                    let index = this.musicData.findIndex(item => {
+                        if(item.title === inputData.title && item.difficult === inputData.difficult) return true;
+                    })
+                    if(index === -1){
+                        this.musicData.push(inputData);
+                    } else {
+                        this.musicData[index].data[this.musicData[index].data.length - 1] = inputData.data[0];
+                    }
+                    localStorage.setItem('musicdata', JSON.stringify(this.musicData));
+                    $('.addModal').css('display', 'none');
+                }
+                
+                $('.registerBtn').css('display', 'block');
+                $('.fixBtn').css('display', 'none');
             },
             sortMusicName: function(){
                 if(this.sortType == '曲名降順') {
@@ -486,20 +568,17 @@ jQuery(function($){
                 this.opened = false;
             },
             sameSongAddData: function(){
-                console.log(this.data);
-                
                 $('.songname').val(this.data.title);
-                $('.levelPrint').text(this.data.level);
+                $('.levelPrint').text(Number(this.data.level));
                 $('.songmemo').val('');
                 let diffType = selectDiffColor(this.data.difficult);
-                console.log(diffType)
                 diffArr.forEach((val, id) => {
                     $('.diffBtn').removeClass(`${val}--select`);
                 })
                 $(`.selDiff > .${diffType}`).addClass(`${diffType}--select`)
                 inputData = {
                     'title': this.data.title,
-                    'difficult': 'A',
+                    'difficult': this.data.difficult,
                     'level': Number($('.levelPrint').text()),
                     'data': [{
                         'date': getNowDate(),
@@ -515,8 +594,65 @@ jQuery(function($){
                 $('.addModal').css('display', 'block');
 
             },
-            sameSongAddData: function(){
-                
+            sameSongFixData: function(){
+                $('.songname').val(this.data.title);
+                $('.levelPrint').text(Number(this.data.level));
+                let diffType = selectDiffColor(this.data.difficult);
+                diffArr.forEach((val, id) => {
+                    $('.diffBtn').removeClass(`${val}--select`);
+                })
+                $(`.selDiff > .${diffType}`).addClass(`${diffType}--select`);
+                let editData =  this.data.data[this.data.data.length - 1];
+                $('.songmemo').val(editData.memo);
+                console.log(editData)
+                $('.selectorBtn').removeClass('select');
+                $(`.songSelector > .${editData.selector}`).addClass('select');
+                $('.optBtn').removeClass('select');
+                $(`.selOption > .${editData.option}`).addClass('select');
+                $('.scoreBtn').removeClass('select');
+                $(`.selScore > .${editData.scoreRank}`).addClass('select');
+                $('.rankBtn').removeClass('select');
+                $(`.selGameRank > .${editData.gameRank}`).addClass('select');
+                $('.rankPrint').text(editData.arenaRank);
+                inputData = {
+                    'title': this.data.title,
+                    'difficult': this.data.difficult,
+                    'level': Number($('.levelPrint').text()),
+                    'data': [{
+                        'date': getNowDate(),
+                        'selector': $('.songSelector > .select').attr('class').split(' ')[1],
+                        'option': $('.selOption > .select').attr('class').split(' ')[1],
+                        'arenaRank': $('.rankPrint').text(),
+                        'scoreRank': $('.selScore > .select').attr('class').split(' ')[1],
+                        'gameRank': $('.selGameRank > .select').attr('class').split(' ')[1],
+                        'memo': ''
+                    }]
+                }
+
+                $('.addModal').css('display', 'block');
+                $('.registerBtn').css('display', 'none');
+                $('.fixBtn').css('display', 'block');
+
+            },
+            sameSongDeleteData: function(){
+                $('.delSongTitle').text(this.data.title);
+                $('.delSongDiff').text(this.data.difficult);
+                $('.delModal').css('display', 'block');
+            },
+            sameSongRenameData: function(){
+                $('.songnameForRename').val(this.data.title);
+                $('.levelPrintForRename').text(Number(this.data.level));
+                let diffType = selectDiffColor(this.data.difficult);
+                diffArr.forEach((val, id) => {
+                    $('.diffBtn').removeClass(`${val}--select`);
+                })
+                $(`.selDiff > .${diffType}`).addClass(`${diffType}--select`);
+                renameBase = {
+                    'title': this.data.title,
+                    'diff': this.data.difficult,
+                    'level': this.data.level,
+                };
+                $('.renameModal').css('display', 'block');
             },
         },
         created: function(){

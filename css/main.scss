@@ -1,6 +1,5 @@
 $Header : rgb(50, 130, 255);
 $BGColor : rgb(241, 251, 255);
-$BtnCol : rgb(255, 140, 40);
 $Line : rgb(165, 165, 165);
 
 $Legen : rgb(225, 0, 255);
@@ -57,6 +56,17 @@ $GrayClear : rgba(60, 60, 60, 0.6);
         .modalArea {
             background-color: $BGColor;
         }
+        .sameSongAddDataArea {
+            & > div {
+                background-color: $Header;
+            }
+        }
+        .registerBtn, .fixBtn {
+            background-color: $Header;
+        }
+        .topMusicMenu {
+            background-color: $BGColor;
+        }
     }
 }
 
@@ -106,8 +116,12 @@ body {
         height: 82vh;
         overflow-y: scroll;
         text-align: left;
-        font-size: responsive-fs(22,375);
+        font-size: responsive-fs(17,375);
         font-weight: 800;
+        .topMusicMenu {
+            position: fixed;
+            z-index: 1;
+        }
         & > .musicLineData {
             display: flex;
             height: 6vh;
@@ -115,14 +129,14 @@ body {
             width: 100vw;
 
             & > .music__title {
-                width: 55vw;
+                width: 66vw;
                 overflow: hidden;
                 border-left: 2px solid $Line;
                 border-bottom: 2px solid $Line;
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 text-align: left;
-                padding-left: 3vw;
+                padding-left: 1vw;
                 -moz-user-select: text;
                 -webkit-user-select: text;
                 -ms-user-select: text;
@@ -131,14 +145,17 @@ body {
             & > .music__difficult {
                 border-left: 2px solid $Line;
                 border-bottom: 2px solid $Line;
-                width: 12vw;
+                width: 11vw;
                 text-align: center;
+                font-size: responsive-fs(16,375);
             }
             & > .music__level {
                 text-align: right;
                 border-left: 2px solid $Line;
                 border-bottom: 2px solid $Line;
-                width: calc(15vw - 2px);
+                padding-right: 1vw;
+                width: calc(12vw - 2px);
+                font-size: responsive-fs(16,375);
             }
             & > .music__cnt {
                 text-align: left;
@@ -146,15 +163,20 @@ body {
                 border-right: 2px solid $Line;
                 border-bottom: 2px solid $Line;
                 padding-left: 1vw;
-                width: calc(14vw - 2px);
+                width: calc(11vw - 2px);
+                font-size: responsive-fs(16,375);
             }
             & > .titleLV {
                 text-align: center;
             }
+            & > .topMenu {
+                font-size: responsive-fs(17,375);
+            }
             & > .topTitle {
                 display: flex;
                 padding-left: 5px;
-                width: calc(58vw - 5px);
+                width: calc(67vw - 5px);
+                font-size: responsive-fs(18,375);
                 & > .sortPatternPrint {
                     font-size: responsive-fs(16,375);
                 }
@@ -171,6 +193,7 @@ body {
     display: none;
     top: 0;
     left: 0;
+    z-index: 10;
 
     & > .modalArea {
         width: 90vw;
@@ -200,6 +223,7 @@ body {
                     width: calc(82vw - 1px);
                     height: 5vh;
                     border: 1px solid $Black;
+                    font-size: responsive-fs(19, 375);
                 }
                 & > div {
                     display: flex;
@@ -218,7 +242,7 @@ body {
                     & > .selectorBtn {
                         width: calc(12.5vh + 1.5px);
                     }
-                    .levelPrint, .rankPrint {
+                    .levelPrint, .levelPrintForRename, .rankPrint {
                         background-color: $White;
                         width: calc(8.333333vh + 1px);
                     }
@@ -239,14 +263,16 @@ body {
                 height: 5vh;
             }
         }
-        .registerBtn {
+        .registerBtn, .fixBtn {
             text-align: center;
             width: 33vw;
             margin: auto;
             border: 1px solid $Black;
-            background-color: $BtnCol;
             color: $White;
             font-weight: 800;
+        }
+        .fixBtn {
+            display: none;
         }
     }
     .hisArea {
@@ -341,6 +367,48 @@ body {
     } 
 }
 
+.delModal {
+    background-color: $GrayClear;
+    z-index: 101;
+    & > .delArea {
+        z-index: 102;
+        height: 50vh;
+        top: 25vh;
+        left: 2.5vw;
+        border: 5px solid $Another;
+        & > div {
+            & > .deleteTitle {
+                color: $Another;
+                display: flex;
+                & > p {
+                    margin: 0;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                & > .delSongTitle {
+                    max-width: 85%;
+                }
+            }
+            padding: 8px;
+        }
+    }
+}
+
+.renameModal {
+    background-color: $GrayClear;
+    z-index: 101;
+    & > .renameArea {
+        z-index: 102;
+        height: 30vh;
+        top: 35vh;
+        & > div:first-child {
+            padding-left: 4vw;
+            font-weight: 800;
+        }
+    }
+}
+
 .songModal {
     display: block;
     & > .songArea {
@@ -353,14 +421,14 @@ body {
                 width: 73vw;
                 display: flex;
                 & > p {
-                    width: 20vw;
+                    width: 16vw;
                     margin: 0;
-                    font-size: responsive-fs(17,375);
+                    font-size: responsive-fs(14,375);
                 }
                 & > .songTitleArea {
-                    width: 51vw;
+                    width: 70vw;
                     padding-left: 1vw;
-                    font-size: responsive-fs(17,375);
+                    font-size: responsive-fs(14,375);
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
@@ -372,29 +440,30 @@ body {
 
             }
             & > .songData--playCnt {
-                width: 15vw;
-                font-size: responsive-fs(21,375);
+                width: 11vw;
+                font-size: responsive-fs(14,375);
                 margin-right: 1vw;
                 text-align: right;
             }
         }
 
         .sameSongAddDataArea {
-            width: 60%;
-            height: 5vh;
+            width: 90%;
+            height: 10vh;
             padding-right: 2vw;
             margin: 0;
             margin-left: auto;
+            margin-bottom: 1vh;
             display: flex;
+            flex-wrap: wrap;
             & > div {
-                width: 40%;
+                width: 45%;
                 height: 4vh;
                 line-height: 4vh;
                 margin: 0;
                 margin-left: auto;
-                font-size: responsive-fs(15,375);
+                font-size: responsive-fs(16,375);
                 border: 1px solid $GrayClear;
-                background-color: $BtnCol;
                 color: $White;
                 text-align: center;
                 font-weight: 800;
