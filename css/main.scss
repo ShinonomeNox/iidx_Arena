@@ -197,6 +197,7 @@ body {
     top: 0;
     left: 0;
     z-index: 10;
+    overflow-y: hidden;
 
     & > .modalArea {
         width: 90vw;
