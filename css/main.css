@@ -176,7 +176,7 @@ body {
 .modal {
   background-color: rgba(60, 60, 60, 0.6);
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   position: absolute;
   display: none;
   top: 0;
@@ -184,9 +184,9 @@ body {
   z-index: 10; }
   .modal > .modalArea {
     width: 90vw;
-    height: 80vh;
+    height: 75vh;
     position: absolute;
-    top: 10vh;
+    top: 7.5vh;
     left: 5vw;
     z-index: 100; }
     .modal > .modalArea .top {
@@ -301,6 +301,7 @@ body {
       border-bottom: 1px solid rgba(60, 60, 60, 0.6); }
       .modal .hisArea .musicRanking p {
         margin: 0;
+        line-height: 6.6666666667vmin;
         font-size: 4vmin; }
       .modal .hisArea .musicRanking .avgRank {
         width: 12%;

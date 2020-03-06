@@ -191,7 +191,7 @@ body {
 .modal {
     background-color: $GrayClear;
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
     position: absolute;
     display: none;
     top: 0;
@@ -200,9 +200,9 @@ body {
 
     & > .modalArea {
         width: 90vw;
-        height: 80vh;
+        height: 75vh;
         position: absolute;
-        top: 10vh;
+        top: 7.5vh;
         left: 5vw;
         //border-radius: 25px;
         z-index: 100;
@@ -350,6 +350,7 @@ body {
             border-bottom: 1px solid $GrayClear;
             p {
                 margin: 0;
+                line-height: responsive-fs(25,375);
                 font-size: responsive-fs(15,375);
             }
             .avgRank {
