@@ -91,6 +91,7 @@ body {
   margin: 0;
   user-select: none; }
   #main > .header {
+    position: fixed;
     color: white;
     width: calc(100vw);
     height: 7vh;
@@ -99,8 +100,7 @@ body {
     font-size: 5.8666666667vmin;
     font-weight: 800;
     margin: 0;
-    position: fixed;
-    z-index: 1;
+    z-index: 2;
     display: flex; }
     #main > .header > .btnDiv {
       width: calc(15vw - 4px);
@@ -117,7 +117,8 @@ body {
     overflow-y: scroll;
     text-align: left;
     font-size: 4.5333333333vmin;
-    font-weight: 800; }
+    font-weight: 800;
+    margin-top: 7vh; }
     #main > .data .topMusicMenu {
       position: fixed;
       z-index: 1; }
@@ -296,7 +297,8 @@ body {
       font-weight: 700;
       font-size: 5.6vmin; }
     .modal .hisArea .musicRanking {
-      display: flex; }
+      display: flex;
+      border-bottom: 1px solid rgba(60, 60, 60, 0.6); }
       .modal .hisArea .musicRanking p {
         margin: 0;
         font-size: 4vmin; }

@@ -86,6 +86,7 @@ body {
 
     & > .header {
         //border: 2px solid $Line;
+        position: fixed;
         color: $White;
         width: calc(100vw);
         height: 7vh;
@@ -94,8 +95,7 @@ body {
         font-size: responsive-fs(22,375);
         font-weight: 800;
         margin: 0;
-        position: fixed;
-        z-index: 1;
+        z-index: 2;
         
         display: flex;
         & > .btnDiv {
@@ -120,6 +120,7 @@ body {
         text-align: left;
         font-size: responsive-fs(17,375);
         font-weight: 800;
+        margin-top: 7vh;
         .topMusicMenu {
             position: fixed;
             z-index: 1;
@@ -346,6 +347,7 @@ body {
         }
         .musicRanking {
             display: flex;
+            border-bottom: 1px solid $GrayClear;
             p {
                 margin: 0;
                 font-size: responsive-fs(15,375);
