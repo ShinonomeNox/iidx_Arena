@@ -447,10 +447,15 @@ body {
 .songModal {
     display: block;
     & > .songArea {
-        overflow-y: scroll;
+        overflow-y: hidden;
+        .scrollArea {
+            overflow-y: scroll;
+            height: 62vh;
+        }
         & > .songDataHeader {
             display: flex;
             width: 88vw;
+            //height: 7vh;
             margin: auto;
             & > .songData--title {
                 width: 73vw;

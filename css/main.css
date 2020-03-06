@@ -375,7 +375,10 @@ body {
 .songModal {
   display: block; }
   .songModal > .songArea {
-    overflow-y: scroll; }
+    overflow-y: hidden; }
+    .songModal > .songArea .scrollArea {
+      overflow-y: scroll;
+      height: 62vh; }
     .songModal > .songArea > .songDataHeader {
       display: flex;
       width: 88vw;

@@ -34,56 +34,58 @@
                             <div class="sameSongRenameDataBtn" @click="sameSongRenameData()">基本データ修正</div>
                             <div class="sameSongDelDataBtn" @click="sameSongDeleteData()">楽曲データ削除</div>
                         </div>
-                        <div class="rankCntArea">
-                            <p class="areaTopTitle">総合順位回数</p>
-                            <div class="rank" v-for="(rank, id) in rankCnt">
-                                <p>{{id + 1}}位 : {{rank}}回</p><p class="per">({{Math.round(rank/ data.data.length * 100)}}％)</p>
+                        <div class="scrollArea">
+                            <div class="rankCntArea">
+                                <p class="areaTopTitle">総合順位回数</p>
+                                <div class="rank" v-for="(rank, id) in rankCnt">
+                                    <p>{{id + 1}}位 : {{rank}}回</p><p class="per">({{Math.round(rank/ data.data.length * 100)}}％)</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="optionDataScoreArea">
-                            <p class="areaTopTitle">オプション別順位</p>
-                            <div>
-                                <div class="opWinRate" v-for="(data, id) in optionRank">
-                                    <div class="opWinArea">
-                                        <div>{{data.option}}:{{data.rankCnt.reduce((p, c) => {return p+c})}}回</div>
-                                        <div class="opRank" v-for="(rank, id) in data.rankCnt">
-                                            <p class="opGaRank">{{id + 1}}位</p><p class="opScCnt">:{{rank}}</p>
+                            <div class="optionDataScoreArea">
+                                <p class="areaTopTitle">オプション別順位</p>
+                                <div>
+                                    <div class="opWinRate" v-for="(data, id) in optionRank">
+                                        <div class="opWinArea">
+                                            <div>{{data.option}}:{{data.rankCnt.reduce((p, c) => {return p+c})}}回</div>
+                                            <div class="opRank" v-for="(rank, id) in data.rankCnt">
+                                                <p class="opGaRank">{{id + 1}}位</p><p class="opScCnt">:{{rank}}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="optionDataScoreArea">
-                            <p class="areaTopTitle">オプション別スコア</p>
-                            <div>
-                                <div class="opWinRate" v-for="(data, id) in optionRank">
-                                    <div class="opWinArea">
-                                        <div>{{data.option}}:{{data.rankCnt.reduce((p, c) => {return p+c})}}回</div>
-                                        <div class="opScore" v-for="(rank, id) in data.ScoreCnt">
-                                         <p class="opScRank">{{scoreRankArr[id]}}</p><p class="opScCnt">:{{rank}}</p>
+                            <div class="optionDataScoreArea">
+                                <p class="areaTopTitle">オプション別スコア</p>
+                                <div>
+                                    <div class="opWinRate" v-for="(data, id) in optionRank">
+                                        <div class="opWinArea">
+                                            <div>{{data.option}}:{{data.rankCnt.reduce((p, c) => {return p+c})}}回</div>
+                                            <div class="opScore" v-for="(rank, id) in data.ScoreCnt">
+                                            <p class="opScRank">{{scoreRankArr[id]}}</p><p class="opScCnt">:{{rank}}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="DataHistory">
-                            <p class="areaTopTitle">プレー履歴</p>
-                            <div class="dataHisArea">
-                                <div class="hisDate">日付</div>
-                                <div>選曲</div>
-                                <div>ﾗﾝｸ</div>
-                                <div class="hisOption">OP</div>
-                                <div class="hisScore">ｽｺｱ</div>
-                                <div>順位</div>
-                            </div>
-                            <div class="dataHisArea" v-for="(his, id) in normalizeData">
-                                <div class="hisDate">{{normalizeData.length - id}}:{{his.date}}</div>
-                                <div>{{his.selector}}</div>
-                                <div>{{his.arenaRank}}</div>
-                                <div class="hisOption">{{his.option}}</div>
-                                <div class="hisScore">{{his.scoreRank}}</div>
-                                <div>{{his.gameRank}}</div>
-                                <div class="hisMemo">{{his.memo}}</div>
+                            <div class="DataHistory">
+                                <p class="areaTopTitle">プレー履歴</p>
+                                <div class="dataHisArea">
+                                    <div class="hisDate">日付</div>
+                                    <div>選曲</div>
+                                    <div>ﾗﾝｸ</div>
+                                    <div class="hisOption">OP</div>
+                                    <div class="hisScore">ｽｺｱ</div>
+                                    <div>順位</div>
+                                </div>
+                                <div class="dataHisArea" v-for="(his, id) in normalizeData">
+                                    <div class="hisDate">{{normalizeData.length - id}}:{{his.date}}</div>
+                                    <div>{{his.selector}}</div>
+                                    <div>{{his.arenaRank}}</div>
+                                    <div class="hisOption">{{his.option}}</div>
+                                    <div class="hisScore">{{his.scoreRank}}</div>
+                                    <div>{{his.gameRank}}</div>
+                                    <div class="hisMemo">{{his.memo}}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
