@@ -99,6 +99,7 @@ body {
     font-size: 5.8666666667vmin;
     font-weight: 800;
     margin: 0;
+    position: fixed;
     z-index: 1;
     display: flex; }
     #main > .header > .btnDiv {
