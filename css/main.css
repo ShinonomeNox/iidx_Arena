@@ -99,6 +99,7 @@ body {
     font-size: 5.8666666667vmin;
     font-weight: 800;
     margin: 0;
+    z-index: 1;
     display: flex; }
     #main > .header > .btnDiv {
       width: calc(15vw - 4px);
