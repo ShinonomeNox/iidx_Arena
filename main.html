@@ -192,22 +192,61 @@
 
         <div class="modal hisModal" @click.self="closeHistory()">
             <div class="modalArea hisArea" v-bind="results">
-                <div class="hisTitle">通算成績詳細  (平均順位:{{totalAvg}})</div>
-                <div class="rankCntArea">
-                    <div class="rank" v-for="(rank, id) in results">
-                        <p>{{id + 1}}位 : {{rank}}回</p><p class="per">({{Math.round(rank/ results.reduce((p, c) => {return p+c}) * 100)}}％)</p>
+                <div class="hisTitle">順位成績</div>
+                <div class="resultInfoArea">
+                    <div>
+                        <div class="hisTitleSub hisTitle">通算成績<br>平均:{{totalAvg}}位</div>
+                        <div class="rankCntArea">
+                            <div class="rank" v-for="(rank, id) in results">
+                                <p>{{id + 1}}位 : {{rank}}</p><p class="per">({{Math.round(rank/ results.reduce((p, c) => {return p+c}) * 100)}}％)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="hisTitleSub hisTitle">自選曲成績<br>平均:{{playerAvg}}位</div>
+                        <div class="rankCntArea">
+                            <div class="rank" v-for="(rank, id) in playerSelResults">
+                                <p>{{id + 1}}位 : {{rank}}</p><p class="per">({{Math.round(rank/ playerSelResults.reduce((p, c) => {return p+c}) * 100)}}％)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="hisTitleSub hisTitle">他選曲成績<br>平均:{{rivalAvg}}位</div>
+                        <div class="rankCntArea">
+                            <div class="rank" v-for="(rank, id) in rivalSelResults">
+                                <p>{{id + 1}}位 : {{rank}}</p><p class="per">({{Math.round(rank/ rivalSelResults.reduce((p, c) => {return p+c}) * 100)}}％)</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="hisTitle">自選曲成績詳細  (平均順位:{{playerAvg}})</div>
-                <div class="rankCntArea">
-                    <div class="rank" v-for="(rank, id) in playerSelResults">
-                        <p>{{id + 1}}位 : {{rank}}回</p><p class="per">({{Math.round(rank/ playerSelResults.reduce((p, c) => {return p+c}) * 100)}}％)</p>
+                <div class="hisTitle">ランク別平均順位</div>
+                <div class="resultInfoArea">
+                    <div>
+                        <div class="hisTitleSub hisTitle">通算順位</div>
+                        <div class="arenaRankCntArea rankCntArea">
+                            <div class="rank" v-for="(rank, id, cnt) in arenaRankAvg.total">
+                                <p class="arenaAveRank">{{id}} : {{(rank.reduce((p, c, i) => {return p+c*(i+1)}) / rank.reduce((p, c) => {return p+c})).toFixed(2)}}</p>
+                                <p class="per">{{(rank.reduce((p, c) => {return p+c}))}}戦</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="hisTitle">他選曲成績詳細  (平均順位:{{rivalAvg}})</div>
-                <div class="rankCntArea">
-                    <div class="rank" v-for="(rank, id) in rivalSelResults">
-                        <p>{{id + 1}}位 : {{rank}}回</p><p class="per">({{Math.round(rank/ rivalSelResults.reduce((p, c) => {return p+c}) * 100)}}％)</p>
+                    <div>
+                        <div class="hisTitleSub hisTitle">自選曲順位</div>
+                        <div class="arenaRankCntArea rankCntArea">
+                            <div class="rank" v-for="(rank, id) in arenaRankAvg.player">
+                                <p class="arenaAveRank">{{id}} : {{(rank.reduce((p, c, i) => {return p+c*(i+1)}) / rank.reduce((p, c) => {return p+c})).toFixed(2)}}</p>
+                                <p class="per">{{(rank.reduce((p, c) => {return p+c}))}}戦</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="hisTitleSub hisTitle">他選曲順位</div>
+                        <div class="arenaRankCntArea rankCntArea">
+                            <div class="rank" v-for="(rank, id) in arenaRankAvg.rival">
+                                <p class="arenaAveRank">{{id}} : {{(rank.reduce((p, c, i) => {return p+c*(i+1)}) / rank.reduce((p, c) => {return p+c})).toFixed(2)}}</p>
+                                <p class="per">{{(rank.reduce((p, c) => {return p+c}))}}戦</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="hisTitle">曲別平均順位ランキング</div>

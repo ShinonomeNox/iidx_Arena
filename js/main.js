@@ -54,6 +54,7 @@ jQuery(function($){
             'playerAvg': Number,
             'rivalAvg': Number,
             'musicAvgRanking': Object,
+            'arenaRankAvg': Object,
         },
         mounted: function(){
             this.date = getNowDate();
@@ -83,32 +84,50 @@ jQuery(function($){
                 let rankCnt = [0,0,0,0];
                 let rivalCnt = [0,0,0,0];
                 let playerCnt = [0,0,0,0];
+                let arenaRankAvgCnt = {
+                    'total' : {},
+                    'player' : {},
+                    'rival' : {},
+                };
                 let dataArr = this.musicData;
                 this.musicAvgRanking = [];
                 //rank
                 dataArr.forEach((val, id)=>{
                     let songCnt = [0,0,0,0];
                     val.data.forEach((v,i) => {
+                        if(!arenaRankAvgCnt.total[v.arenaRank]) {
+                            arenaRankAvgCnt.total[v.arenaRank] = [0,0,0,0];
+                            arenaRankAvgCnt.player[v.arenaRank] = [0,0,0,0];
+                            arenaRankAvgCnt.rival[v.arenaRank] = [0,0,0,0];
+                        }
                         switch (v.gameRank) {
                             case 'first':
                                 rankCnt[0]++;
                                 songCnt[0]++;
+                                arenaRankAvgCnt.total[v.arenaRank][0]++;
                                 v.selector == 'player' ? playerCnt[0]++ : rivalCnt[0]++;
+                                v.selector == 'player' ? arenaRankAvgCnt.player[v.arenaRank][0]++ : arenaRankAvgCnt.rival[v.arenaRank][0]++;
                                 break;
                             case 'second':
                                 rankCnt[1]++;
                                 songCnt[1]++;
+                                arenaRankAvgCnt.total[v.arenaRank][1]++;
                                 v.selector == 'player' ? playerCnt[1]++ : rivalCnt[1]++;
+                                v.selector == 'player' ? arenaRankAvgCnt.player[v.arenaRank][1]++ : arenaRankAvgCnt.rival[v.arenaRank][1]++;
                                 break;
                             case 'third':
                                 rankCnt[2]++;
                                 songCnt[2]++;
+                                arenaRankAvgCnt.total[v.arenaRank][2]++;
                                 v.selector == 'player' ? playerCnt[2]++ : rivalCnt[2]++;
+                                v.selector == 'player' ? arenaRankAvgCnt.player[v.arenaRank][2]++ : arenaRankAvgCnt.rival[v.arenaRank][2]++;
                                 break;
                             case 'fourth':
                                 rankCnt[3]++;
                                 songCnt[3]++;
+                                arenaRankAvgCnt.total[v.arenaRank][3]++;
                                 v.selector == 'player' ? playerCnt[3]++ : rivalCnt[3]++;
+                                v.selector == 'player' ? arenaRankAvgCnt.player[v.arenaRank][3]++ : arenaRankAvgCnt.rival[v.arenaRank][3]++;
                                 break;
                             default:
                                 break;
@@ -128,7 +147,7 @@ jQuery(function($){
                 this.totalAvg = (rankCnt.reduce((p, c, i) => {return p+c*(i+1)}) / rankCnt.reduce((p, c) => {return p+c})).toFixed(2);
                 this.playerAvg = (playerCnt.reduce((p, c, i) => {return p+c*(i+1)}) / playerCnt.reduce((p, c) => {return p+c})).toFixed(2);
                 this.rivalAvg = (rivalCnt.reduce((p, c, i) => {return p+c*(i+1)}) / rivalCnt.reduce((p, c) => {return p+c})).toFixed(2);
-                console.log(this.results)
+                console.log(this.results);
                 this.musicAvgRanking.sort(function(a,b){
                     if(a.cnt > b.cnt) return -1;
                     if(a.cnt < b.cnt) return 1;
@@ -139,6 +158,29 @@ jQuery(function($){
                     if(a.avg < b.avg) return -1;
                     return 0;
                 });
+                let sortAfterArenaHash = {
+                    'total' : {},
+                    'player' : {},
+                    'rival' : {},
+                };
+                Object.keys(arenaRankAvgCnt).forEach((key) => {
+                    let keys = [];
+                    console.log(arenaRankAvgCnt[key])
+
+                    Object.keys(arenaRankAvgCnt[key]).forEach((k,id,val) => {
+                         keys.push(k);
+                    });
+                    console.log(keys)
+                    keys.sort();
+                    console.log(keys)
+                    let keyLen = keys.length;
+                    for(let i = 0; i < keyLen; i++){
+                        sortAfterArenaHash[key][keys[i]] = arenaRankAvgCnt[key][keys[i]];
+                    }
+                });
+
+                this.arenaRankAvg = sortAfterArenaHash;
+                console.log(this.arenaRankAvg);
 
                 diffArr.forEach((val, id) => {
                     $('.musicRanking').removeClass(val);

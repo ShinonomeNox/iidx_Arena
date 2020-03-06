@@ -243,6 +243,46 @@ body {
       display: none; }
   .modal .hisArea {
     overflow-y: auto; }
+    .modal .hisArea > .resultInfoArea {
+      display: flex; }
+      .modal .hisArea > .resultInfoArea > div {
+        width: 32%; }
+        .modal .hisArea > .resultInfoArea > div > .hisTitleSub {
+          margin: 0;
+          margin-left: 2vw;
+          margin-top: 1vh;
+          line-height: 4vh;
+          text-align: left;
+          font-size: 4.2666666667vmin; }
+        .modal .hisArea > .resultInfoArea > div .rankCntArea {
+          margin-bottom: 2vh;
+          padding-left: 2vw;
+          display: flex;
+          flex-wrap: wrap; }
+          .modal .hisArea > .resultInfoArea > div .rankCntArea > div {
+            height: 5vh;
+            width: 100%;
+            display: flex; }
+            .modal .hisArea > .resultInfoArea > div .rankCntArea > div > p {
+              width: 60%;
+              text-align: left;
+              margin: 0;
+              font-weight: 600;
+              font-size: 3.4666666667vmin;
+              line-height: 5vh; }
+            .modal .hisArea > .resultInfoArea > div .rankCntArea > div > .per {
+              width: 40%;
+              text-align: left;
+              margin: 0 auto;
+              font-size: 2.9333333333vmin; }
+        .modal .hisArea > .resultInfoArea > div .arenaRankCntArea > .rank > .arenaAveRank {
+          width: 70%;
+          font-size: 3.4666666667vmin; }
+        .modal .hisArea > .resultInfoArea > div .arenaRankCntArea > .rank > .per {
+          width: 30%;
+          text-align: right;
+          margin: 0 auto;
+          font-size: 2.9333333333vmin; }
     .modal .hisArea > .hisTitle {
       width: 86vw;
       margin: 0;
@@ -253,26 +293,6 @@ body {
       text-align: left;
       font-weight: 700;
       font-size: 5.6vmin; }
-    .modal .hisArea .rankCntArea {
-      margin-bottom: 2vh;
-      padding-left: 4vw;
-      display: flex;
-      flex-wrap: wrap; }
-      .modal .hisArea .rankCntArea > div {
-        width: 48%;
-        height: 5vh;
-        margin: auto;
-        display: flex; }
-        .modal .hisArea .rankCntArea > div > p {
-          text-align: center;
-          margin: 0;
-          font-weight: 700;
-          font-size: 4.8vmin;
-          line-height: 5vh; }
-        .modal .hisArea .rankCntArea > div > .per {
-          text-align: center;
-          margin: 0 auto;
-          font-size: 3.7333333333vmin; }
     .modal .hisArea .musicRanking {
       display: flex; }
       .modal .hisArea .musicRanking p {
